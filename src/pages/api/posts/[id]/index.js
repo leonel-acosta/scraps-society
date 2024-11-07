@@ -1,18 +1,18 @@
 import dbConnect from "@/db/connect";
-import User from "@/db/models/User";
+import Post from "@/db/models/Post";
 
 export default async function handler(request, response) {
   await dbConnect();
 
   const { id } = request.query;
 
-  if (request.method === "GET") {
-    const user = await User.findById(id);
+  /*   if (request.method === "GET") {
+    const post = await Post.findById(id);
 
-    if (!user) {
+    if (!post) {
       return response.status(404).json({ status: "Not Found" });
     }
 
-    response.status(200).json(user);
-  }
+    response.status(200).json(post);
+  } */
 }
