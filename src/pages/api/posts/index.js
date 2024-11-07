@@ -3,6 +3,7 @@ import Post from "@/db/models/Post";
 
 export default async function handler(request, response) {
   await dbConnect();
+  console.log("connected");
 
   if (request.method === "GET") {
     const posts = await Post.find();
