@@ -36,8 +36,8 @@ export default function LoginForm() {
         />
         <span className="text-right mb-4 font-xs">Forgot password?</span>
         <Button text={"Log in"} primary />
-        <span className="text-center"> [ sign in with google button ]</span>
 
+        <span className="text-center"> or</span>
         <span className="text-center mb-3 font-xs">
           Don't you have an account? <Link href="./register">Sign up</Link>
         </span>
