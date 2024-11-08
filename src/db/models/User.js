@@ -5,8 +5,10 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   username: { type: String, required: true },
   name: { type: String, required: true },
-  family_name: { type: String, required: true },
-  presentation: { type: String },
+  password: { type: String, required: true },
+  email: { type: String, required: true },
+  family_name: { type: String },
+  short_description: { type: String },
 });
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
