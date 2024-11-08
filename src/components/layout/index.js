@@ -1,5 +1,3 @@
-import { Children } from "react";
-
-export default function Badge() {
-  return <Children />;
+export default function Layout({ children }) {
+  return <> {children} </>;
 }
