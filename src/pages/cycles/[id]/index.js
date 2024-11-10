@@ -1,8 +1,31 @@
 import { useRouter } from "next/router";
+import useSWR from "swr";
+import Button from "@/components/Button";
 
 export default function CyclePage() {
   const router = useRouter();
+  const { mutate } = useSWR("/api/posts");
+
+  const { isReady } = router;
   const { id } = router.query;
 
-  return <p>Under Construction</p>;
+  const { data, isLoading, error } = useSWR(`/api/posts/${id}`);
+  const post = data;
+
+  if (!isReady || isLoading || error) return <h2>Loading...</h2>;
+
+  async function deletePost() {
+    console.log("delete");
+    await fetch(`/api/posts/${id}`, {
+      method: "DELETE",
+    });
+    router.push("/");
+  }
+
+  return (
+    <>
+      <p>Under Construction</p>
+      <Button onClick={deletePost} text="delete"></Button>
+    </>
+  );
 }

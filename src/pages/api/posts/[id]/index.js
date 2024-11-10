@@ -32,5 +32,10 @@ export default async function handler(request, response) {
     }
   }
 
+  if (request.method === "DELETE") {
+    await Post.findByIdAndDelete(id);
+    response.status(200).json({ status: `Place ${id} successfully deleted.` });
+  }
+
   const post = Post.find((post) => post._id.$oid === id);
 }
