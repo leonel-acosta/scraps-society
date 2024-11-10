@@ -23,7 +23,7 @@ export default function CyclesPage() {
         {posts.map((post) => {
           return (
             <li key={post.id}>
-              <CycleCard title={post.title} />
+              <CycleCard title={post.id} />
             </li>
           );
         })}
