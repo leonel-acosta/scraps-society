@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 
 export default function CyclePage() {
   const router = useRouter();
-  const { mutate } = useSWR("/api/posts");
+  const { mutate } = useSWR(`/api/posts`);
 
   const { isReady } = router;
   const { id } = router.query;
