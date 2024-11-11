@@ -16,8 +16,11 @@ export default function CycleCard({
 }) {
   console.log(image);
   return (
-    <card className="flex flex-col sm:flex-row p-5 justify-around bg-secondary mb-2 rounded-lg gap-5">
-      <div className="bg-primary rounded-lg" style={{ position: "relative" }}>
+    <card className="flex flex-col sm:flex-row p-5 justify-around bg-secondary mb-2 rounded-lg gap-3">
+      <div
+        className="bg-primary rounded-lg col-6"
+        style={{ position: "relative" }}
+      >
         <Image
           src={image}
           width={260}
