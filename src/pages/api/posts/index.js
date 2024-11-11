@@ -2,8 +2,24 @@ import dbConnect from "@/db/connect";
 import Post from "@/db/models/Post";
 
 export default async function handler(request, response) {
-  await dbConnect();
-  console.log("connected");
+  try {
+    await dbConnect();
+    console.log("Database connected");
+  } catch (error) {
+    console.log("Database not connected");
+    return response.satus(500).json({ error: "Database connection failed" });
+  }
+
+  if (request.method == "POST") {
+    try {
+      const postData = request.body;
+      await Post.create(postData);
+      response.status(201).json({ status: "New post created" });
+    } catch (error) {
+      console.log(error);
+      response.status(400).json({ error: error.message });
+    }
+  }
 
   if (request.method === "GET") {
     const posts = await Post.find();
