@@ -25,8 +25,11 @@ export default function CreateFormPage() {
 
   return (
     <>
+      <div className="flex flex-column justify-center"></div>
       <h2>Create new cycle</h2>
-      <CreateForm onSubmit={createPost} />
+      <div className="bg-secondary p-5 rounded-lg m-5 w-1/2">
+        <CreateForm onSubmit={createPost} />
+      </div>
     </>
   );
 }
