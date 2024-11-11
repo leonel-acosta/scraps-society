@@ -2,20 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Chivo";
+  src: url("../pages/fonts/Chivo-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Chivo Mono";
+  src: url("../pages/fonts/ChivoMono-VariableFont_wght.ttf");
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #202120;
+  --accent-color: #32bc81;
+  --primary-color: #203d3f;
+  --primary-color-hover: #38585a;
+  --secondary-color: #555d55;
+  --secondary-color-hover: ##484f48;
+  --tertiary-color: #b4cabf;
+  --tertiary-color-alt: #ededed;
+  --white: #fafafa;
+
+  --heading-font: "Chivo Mono";
+  --body-font: "Chivo";
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #202120;
+    --foreground: #fafafa;
   }
 }
 
 body {
+  box-sizing: border-box;
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--body-font), Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-family: var(--heading-font), Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 2.75em;
+}
+
+h2 {
+  font-family: var(--heading-font), Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 2.25em;
+}
+
+h3 {
+  font-family: var(--heading-font), Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 1.75em;
+}
+
+h4 {
+  font-family: var(--heading-font), Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 1.25em;
+}
+
+h5 {
+  font-family: var(--heading-font), Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 1.1em;
+}
+
+p {
+  font-family: var(--body-font), Arial, Helvetica, sans-serif;
+  font-size: 1em;
+}
+
+.meta {
+  font-family: var(--body-font), Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.8em;
+}
+
+.bg-primary {
+  background-color: var(--secondary-color);
+}
+
+.bg-secondary {
+  background-color: var(--primary-color);
 }
