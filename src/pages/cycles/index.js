@@ -18,8 +18,8 @@ export default function CyclesPage() {
 
   return (
     <>
-      <h1>CYCLES</h1>
-      <div className="container flex justify-center">
+      <h1 className="text-center">CYCLES</h1>
+      <div className="flex justify-center">
         <ul role="list">
           {posts.map((post) => {
             return (
