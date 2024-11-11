@@ -4,14 +4,13 @@ import Button from "@/components/Button";
 
 export default function CyclePage() {
   const router = useRouter();
-  const { mutate } = useSWR("/api/posts");
-
-  const { isReady } = router;
   const { id } = router.query;
 
-  const { data, isLoading, error } = useSWR(`/api/posts/${id}`);
-  const post = data;
+  const { isReady } = router;
 
+  const { data, isLoading, error, mutate } = useSWR(`/api/posts/${id}`);
+  const post = data;
+  console.log(post);
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
   async function deletePost() {
