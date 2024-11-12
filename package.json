@@ -11,7 +11,7 @@
   "dependencies": {
     "@next/font": "^14.2.15",
     "mongodb": "^6.10.0",
-    "mongoose": "^8.8.0",
+    "mongoose": "^8.8.1",
     "next": "15.0.2",
     "next-auth": "^4.24.10",
     "react": "19.0.0-rc-02c0e824-20241028",
