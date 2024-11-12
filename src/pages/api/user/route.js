@@ -1,4 +1,4 @@
-import dbConnect from "@/db/connect";
+/* import dbConnect from "@/db/connect";
 import User from "@/db/models/User";
 
 export async function POST(request) {
@@ -7,3 +7,4 @@ export async function POST(request) {
   await User.create({ name, email });
   return NextResponse.json({ message: "User Registered" }, { status: 201 });
 }
+ */

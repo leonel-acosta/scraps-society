@@ -1,34 +1,36 @@
-import RegisterForm from "@/components/RegisterForm";
+import UpdateForm from "@/components/UpdateForm";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
-export default function Register() {
+export default function UpdateProfile() {
   const router = useRouter();
-  const { mutate } = useSWR("../api/users");
+  const { isReady } = router;
+  const { id } = router.query;
+  const { data: user, isLoading, error, mutate } = useSWR(`../api/users/${id}`);
+  console.log({ user });
 
-  async function createUser(user) {
-    const response = await fetch("../api/users", {
-      method: "POST",
+  async function updateUser(updatedProfile) {
+    const response = await fetch(`../api/users/${id}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(updatedProfile),
     });
 
     if (response.ok) {
       mutate();
-      console.log("New user created:", user);
-      router.push("./user");
+      console.log("User Profile Updated:");
+      router.push(`./users/${id}`);
     } else {
-      console.error("Failed to add user");
+      console.error("Failed to update user profile");
     }
   }
 
   return (
     <>
-      <h3>Welcome</h3>
-      <h2>Sign Up</h2>
-      <RegisterForm onSubmit={createUser} />
+      <h2>Update your profile</h2>
+      <UpdateForm onSubmit={updateUser} defaultData={user} />
     </>
   );
 }
