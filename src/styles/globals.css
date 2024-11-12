@@ -91,3 +91,7 @@ p {
 .bg-secondary {
   background-color: var(--primary-color);
 }
+
+input {
+  border: var(--primary) solid 2px;
+}
