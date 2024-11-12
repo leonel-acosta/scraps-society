@@ -1,5 +1,5 @@
 import styles from "./RegisterForm.module.css";
-import Button from "../button";
+import Button from "../Button";
 import Link from "next/link";
 
 export default function RegisterForm({ onSubmit }) {

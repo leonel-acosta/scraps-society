@@ -1,3 +1,11 @@
+import LoginForm from "@/components/loginform";
+
 export default function Login() {
-  return <p>Under Construction</p>;
+  return (
+    <>
+      <h2> Welcome to Scraps Society</h2>
+
+      <LoginForm />
+    </>
+  );
 }
