@@ -1,4 +1,4 @@
-import RegisterForm from "@/components/registerform";
+import RegisterForm from "@/components/RegisterForm";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
