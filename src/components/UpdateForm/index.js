@@ -2,7 +2,7 @@ import styles from "./RegisterForm.module.css";
 import Button from "../Button";
 import Link from "next/link";
 
-export default function RegisterForm({ onSubmit }) {
+export default function updateForm({ onSubmit }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
