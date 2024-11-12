@@ -26,7 +26,8 @@ export default function App({
       <SessionProvider session={session}>
       <Header />
       <Component {...pageProps} />
-      <Footer />      </SessionProvider>
+      <Footer />      
+      </SessionProvider>
     </Layout>
   );
 }
