@@ -14,7 +14,6 @@ export default function CycleCard({
   unit,
   category,
 }) {
-  console.log(image);
   return (
     <card className="flex flex-col sm:flex-row p-5 justify-around bg-secondary mb-2 rounded-lg gap-3">
       <div
