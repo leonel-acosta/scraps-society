@@ -32,5 +32,27 @@ export default async function handler(request, response) {
       return response.status(400).json({ error: error.message });
     }
   }
+
+  if (request.method === "PATCH") {
+    try {
+      const updatedData = request.body;
+      console.log(updatedData);
+      const updatedUser = await User.findByIdAndUpdate(id, updatedData, {
+        new: true,
+      });
+
+      if (!updatedUser) {
+        return response.status(404).json({ status: "Not Found" });
+      }
+
+      return response.status(200).json(updatedUser);
+    } catch (error) {
+      console.error("Error updating user:", error);
+      return response
+        .status(500)
+        .json({ error: "Internal server error updating user" });
+    }
+  }
+
   const user = User.find((user) => user._id.$oid === id);
 }

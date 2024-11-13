@@ -1,7 +1,10 @@
 import styles from "./CycleForm.module.css";
 import Button from "../Button";
+import { useSession } from "next-auth/react";
 
 export default function CreateForm({ onSubmit }) {
+  const { status, data: session } = useSession();
+
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -29,15 +32,14 @@ export default function CreateForm({ onSubmit }) {
           body: formData,
         }
       ).then((r) => r.json());
-      console.log("data.secure_url: ", data.secure_url);
 
       return data.secure_url;
     }
 
     const image_url = await upload();
+    const created_by = session?.user?.id;
 
-    onSubmit({ ...data, image_url });
-    console.log("New post:", data);
+    onSubmit({ ...data, image_url, created_by });
   }
   return (
     <>

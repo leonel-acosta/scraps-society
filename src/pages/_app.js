@@ -1,8 +1,7 @@
 import "@/styles/globals.css";
 import localFont from "next/font/local";
 import Layout from "@/components/Layout";
-import Head from "next/head";
-import { SessionProvider } from "next-auth/react";
+import { NextAuthProvider } from "./Providers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -22,12 +21,12 @@ export default function App({
   pageProps: { session, ...pageProps },
 }) {
   return (
-    <Layout>
-      <SessionProvider session={session}>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />      
-      </SessionProvider>
-    </Layout>
+    <NextAuthProvider session={session}>
+      <Layout>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </Layout>
+    </NextAuthProvider>
   );
 }
