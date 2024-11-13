@@ -9,7 +9,6 @@ export default function CyclesPage() {
     async function startFetching() {
       const response = await fetch("/api/posts");
       const posts = await response.json();
-      console.log(posts);
       setPosts(posts);
     }
 
