@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const postSchema = new Schema({
   title: { type: String, required: true },
   cycle_type: { type: String, required: true },
+  created_by: { type: String, required: true },
   category: { type: String, required: true },
   quantity: { type: String },
   unit: { type: String },
