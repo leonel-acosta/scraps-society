@@ -14,7 +14,6 @@ export const config = {
 };
 
 export default async function handler(request, response) {
-  // ensure this route can only be used for POST requests
   if (request.method !== "POST") {
     response.status(400).json({ message: "Method not allowed" });
     return;
