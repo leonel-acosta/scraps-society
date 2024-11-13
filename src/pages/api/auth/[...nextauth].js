@@ -33,6 +33,8 @@ export default NextAuth({
           const user = await User.create({
             email: profile.email,
             name: profile.name,
+            //transforms name into username
+            username: profile.name.split(" ").join("-").toLowerCase(),
             image: profile.picture,
           });
         }
