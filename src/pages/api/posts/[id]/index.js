@@ -1,7 +1,5 @@
 import dbConnect from "@/db/connect";
 import Post from "@/db/models/Post";
-import formidable from "formidable";
-import cloudinary from "cloudinary";
 
 export default async function handler(request, response) {
   try {
@@ -38,6 +36,4 @@ export default async function handler(request, response) {
     await Post.findByIdAndDelete(id);
     response.status(200).json({ status: `Place ${id} successfully deleted.` });
   }
-
-  const post = Post.find((post) => post._id.$oid === id);
 }

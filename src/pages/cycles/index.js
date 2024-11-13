@@ -1,19 +1,16 @@
 import CycleCard from "@/components/CycleCard";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import useSWR from "swr";
 
 export default function CyclesPage() {
-  const [posts, setPosts] = useState([]);
+  const { data: posts, error } = useSWR("/api/posts", async (url) => {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Failed to fetch posts");
+    return response.json();
+  });
 
-  useEffect(() => {
-    async function startFetching() {
-      const response = await fetch("/api/posts");
-      const posts = await response.json();
-      setPosts(posts);
-    }
-
-    startFetching();
-  }, []);
+  if (error) return <p>Error loading posts.</p>;
+  if (!posts) return <p>Loading...</p>;
 
   return (
     <>
@@ -23,7 +20,7 @@ export default function CyclesPage() {
           {posts.map((post) => {
             return (
               <li key={post.id}>
-                <Link href={`./cycles/${post._id}`}>
+                <Link href={`/cycles/${post._id}`}>
                   <CycleCard
                     id={post._id}
                     title={post.title}

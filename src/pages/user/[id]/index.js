@@ -1,16 +1,26 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
 export default function UserProfile() {
   const router = useRouter();
-  const { isReady } = router;
   const { id } = router.query;
-
-  const { data, isLoading, error } = useSWR(`/api/users/${id}`);
+  const { data, error } = useSWR(
+    id ? `/api/users/${id}` : null,
+    id ? fetcher : null
+  );
   const user = data;
-  console.log("User Profile", user);
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
 
-  if (!isReady || isLoading || error) return <h2>Loading...</h2>;
+  async function deletePost() {
+    console.log("delete");
+    await fetch(`/api/users/${id}`, {
+      method: "DELETE",
+    });
+    router.push("/");
+  }
 
-  return <p>Under Construction</p>;
+  return <p>{user.username}</p>;
 }
