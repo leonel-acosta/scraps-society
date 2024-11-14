@@ -92,6 +92,10 @@ p {
   background-color: var(--primary-color);
 }
 
+.bg-accent {
+  background-color: var(--accent-color);
+}
+
 input {
   border: var(--primary) solid 2px;
 }

@@ -9,20 +9,20 @@ export default function TransactionForm({ onClick, post }) {
     event.preventDefault();
     const status = "Reserved";
     const requested_by = session?.user?.id;
-    onSubmit({ status, requested_by });
+    onClick({ status, requested_by });
   }
 
   async function handleAcceptRequest(event) {
     event.preventDefault();
     const status = "Given";
     const requested_by = session?.user?.id;
-    onSubmit({ status, requested_by });
+    onClick({ status, requested_by });
   }
 
   async function handleDenyRequest(event) {
     event.preventDefault();
     const status = "Available";
-    onSubmit({ status });
+    onClick({ status });
   }
 
   if (post.status === "Given") {
@@ -35,7 +35,7 @@ export default function TransactionForm({ onClick, post }) {
     return (
       <>
         {post.status === "Available" ? (
-          <Button onClick={handleRequest} text={"Request"} primary />
+          <Button onClick={handleRequest} text={"Request"} accent />
         ) : (
           <p>Request pending</p>
         )}
@@ -45,7 +45,7 @@ export default function TransactionForm({ onClick, post }) {
     return post.status === "Reserved" ? (
       <div>
         <p>Requested by: {post.requested_by}</p>
-        <Button onClick={handleAcceptRequest} text={"Accept"} primary />
+        <Button onClick={handleAcceptRequest} text={"Accept"} accent />
         <Button onClick={handleDenyRequest} text={"Deny"} secondary />
       </div>
     ) : (

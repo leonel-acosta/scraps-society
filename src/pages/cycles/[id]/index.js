@@ -77,6 +77,7 @@ export default function CyclePage() {
           </div>
           <div className="sm:w-2/4 flex flex-col py-4 gap-5">
             {" "}
+            <h5>{post.status}</h5>
             <h2>{post.title}</h2>
             <h5>
               | ICON | {post.address} | {post.zipcode} {post.city} |{" "}

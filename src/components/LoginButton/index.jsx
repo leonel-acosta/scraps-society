@@ -9,7 +9,7 @@ export default function LoginButton() {
         <div className="flex flex-row items-center gap-2">
           {/*           Signed in as {session.user.email} <br />
            */}{" "}
-          <Button onClick={() => signOut()} text={"Sign out"}></Button>
+          <Button primary onClick={() => signOut()} text={"Sign out"}></Button>
         </div>
       </>
     );
