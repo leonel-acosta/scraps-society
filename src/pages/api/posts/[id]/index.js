@@ -32,8 +32,28 @@ export default async function handler(request, response) {
     }
   }
 
+  if (request.method === "PATCH") {
+    try {
+      const updatedData = request.body;
+      const updatedPost = await Post.findByIdAndUpdate(id, updatedData, {
+        new: true,
+      });
+
+      if (!updatedPost) {
+        return response.status(404).json({ status: "Not Found" });
+      }
+
+      return response.status(200).json(updatedPost);
+    } catch (error) {
+      console.error("Error updating post:", error);
+      return response
+        .status(500)
+        .json({ error: "Internal server error updating post" });
+    }
+  }
+
   if (request.method === "DELETE") {
     await Post.findByIdAndDelete(id);
-    response.status(200).json({ status: `Place ${id} successfully deleted.` });
+    response.status(200).json({ status: `Post ${id} successfully deleted.` });
   }
 }
