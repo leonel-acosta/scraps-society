@@ -32,6 +32,7 @@ export default function CyclesPage() {
                     category={post.category}
                     cycle_type={post.cycle_type}
                     image={post.image_url}
+                    status={post.status}
                   />
                 </Link>
               </li>

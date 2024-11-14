@@ -13,6 +13,7 @@ export default function CycleCard({
   quantity,
   unit,
   category,
+  status,
 }) {
   return (
     <card className="flex flex-col sm:flex-row p-5 justify-around bg-secondary mb-2 rounded-lg gap-3">
@@ -45,7 +46,7 @@ export default function CycleCard({
           <li>
             Quantity: {quantity} {unit}
           </li>
-          <li></li>
+          <li>Status: {status}</li>
         </ul>
       </div>
     </card>

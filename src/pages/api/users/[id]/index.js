@@ -53,6 +53,4 @@ export default async function handler(request, response) {
         .json({ error: "Internal server error updating user" });
     }
   }
-
-  const user = User.find((user) => user._id.$oid === id);
 }
