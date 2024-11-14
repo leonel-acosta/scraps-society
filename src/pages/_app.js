@@ -30,7 +30,17 @@ export default function App({
 
   const filteredData = posts
     ? posts.filter((item) =>
-        ["title", "address", "city", "category"].some((key) =>
+        [
+          "title",
+          "category",
+          "quantity",
+          "unit",
+          "address",
+          "city",
+          "country",
+          "cycle_type",
+          "status",
+        ].some((key) =>
           item[key]?.toLowerCase().includes(searchTerm.toLowerCase())
         )
       )

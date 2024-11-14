@@ -5,9 +5,10 @@ export default function SearchBar({ onChange, searchTerm }) {
     <div>
       <input
         className="text-center rounded-full p-5"
-        placeholder="Search by title..."
+        placeholder="Search"
         value={searchTerm}
         onChange={onChange}
+        aria-label="Search bar"
       ></input>
     </div>
   );
