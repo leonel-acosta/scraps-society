@@ -1,23 +1,17 @@
 import CycleCard from "@/components/CycleCard";
+import SearchBar from "@/components/SearchBar";
 import Link from "next/link";
+import { useState } from "react";
 import useSWR from "swr";
 
-export default function CyclesPage() {
-  const { data: posts, error } = useSWR("/api/posts", async (url) => {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error("Failed to fetch posts");
-    return response.json();
-  });
-
-  if (error) return <p>Error loading posts.</p>;
-  if (!posts) return <p>Loading...</p>;
-
+export default function CyclesPage({ filteredData }) {
   return (
     <>
       <h1 className="text-center">CYCLES</h1>
+
       <div className="flex justify-center">
         <ul role="list">
-          {posts.map((post) => {
+          {filteredData.map((post) => {
             return (
               <li key={post.id}>
                 <Link href={`/cycles/${post._id}`}>

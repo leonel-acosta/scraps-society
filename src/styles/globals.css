@@ -98,4 +98,5 @@ p {
 
 input {
   border: var(--primary) solid 2px;
+  color: var(--primary-color);
 }
