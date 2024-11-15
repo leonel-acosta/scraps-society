@@ -11,6 +11,7 @@ const userSchema = new Schema(
     password: { type: String },
     family_name: { type: String },
     short_description: { type: String },
+    wishlist: { type: [String], default: [] },
   },
   { timestamps: true }
 );

@@ -5,10 +5,11 @@ import TransactionForm from "@/components/TransactionForm";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import UserCard from "@/components/UserCard";
+import WishlistButton from "@/components/WishlistButton";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function CyclePage() {
+export default function CyclePage({ onToggleWishlist }) {
   const { status: sessionStatus, data: session } = useSession();
 
   const router = useRouter();
@@ -77,7 +78,7 @@ export default function CyclePage() {
             />
           </div>
           <div className="sm:w-2/4 flex flex-col py-4 gap-5">
-            {" "}
+            <WishlistButton onToggleWishlist={onToggleWishlist} />
             <h5>{post.status}</h5>
             <h2>{post.title}</h2>
             <h5>

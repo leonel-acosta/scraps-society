@@ -74,6 +74,10 @@ export default function App({
   if (error) return <p>Error loading posts.</p>;
   if (!posts) return <p>Loading...</p>;
 
+  function handleOnToggleWishlist() {
+    console.log("toggle");
+  }
+
   return (
     <NextAuthProvider session={session}>
       <Layout>
@@ -86,6 +90,7 @@ export default function App({
           posts={posts}
           filteredData={filteredData}
           onChange={(e) => handleFilterChange(e)}
+          onToggleWishlist={handleOnToggleWishlist}
         />
         <Footer />
       </Layout>

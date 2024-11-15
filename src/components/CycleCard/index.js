@@ -1,3 +1,4 @@
+import WishlistButton from "../WishlistButton";
 import styles from "./CycleCard.module.css";
 import Image from "next/image";
 
@@ -14,6 +15,7 @@ export default function CycleCard({
   unit,
   category,
   status,
+  onToggleWishlist,
 }) {
   return (
     <card className="flex flex-col sm:flex-row p-5 justify-around bg-secondary mb-2 rounded-lg gap-3">
@@ -21,6 +23,8 @@ export default function CycleCard({
         className="bg-primary rounded-lg col-6"
         style={{ position: "relative" }}
       >
+        <WishlistButton onToggleWishlist={onToggleWishlist} />
+
         <Image
           src={image}
           width={260}
