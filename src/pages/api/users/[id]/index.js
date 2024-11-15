@@ -9,10 +9,10 @@ export default async function handler(request, response) {
     console.log("Database not connected");
     return response.satus(500).json({ error: "Database connection failed" });
   }
-  const { id } = request.query;
+  const { id: username } = request.query;
 
   if (request.method === "GET") {
-    const user = await User.findById(id);
+    const user = await User.findOne({ username });
 
     if (!user) {
       return response.status(404).json({ status: "Not Found" });
@@ -23,7 +23,8 @@ export default async function handler(request, response) {
 
   if (request.method === "POST") {
     try {
-      const user = await User.findById(id);
+      const userData = equest.body;
+      const newUser = new User({ username, ...userData });
       await user.save();
 
       return response.status(201).json({ status: "User created" });
@@ -37,7 +38,7 @@ export default async function handler(request, response) {
     try {
       const updatedData = request.body;
       console.log(updatedData);
-      const updatedUser = await User.findByIdAndUpdate(id, updatedData, {
+      const updatedUser = await User.findByIdAndUpdate(username, updatedData, {
         new: true,
       });
 

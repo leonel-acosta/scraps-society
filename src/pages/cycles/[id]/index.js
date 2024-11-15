@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import TransactionForm from "@/components/TransactionForm";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
+import UserCard from "@/components/UserCard";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -17,7 +18,7 @@ export default function CyclePage() {
     id ? fetcher : null
   );
   const post = data;
-  console.log(post);
+  console.log("Post info", post);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
 
@@ -89,20 +90,7 @@ export default function CyclePage() {
                 Quantity: {post.quantity} {post.unit}
               </li>
             </ul>
-            <div className="rounded-lg bg-primary p-5 text-center w-1/2">
-              <span>given by</span>
-              <div className="flex flex-row justify-center gap-5 py-5">
-                <Image
-                  src={post.image_url}
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                  alt="username"
-                />
-
-                <h4>User Name</h4>
-              </div>
-            </div>
+            <UserCard user={post.created_by} />
             <TransactionForm post={post} onClick={editPost} />
             {session && session.user.id === post.created_by ? (
               <Button onClick={deletePost} text="delete"></Button>

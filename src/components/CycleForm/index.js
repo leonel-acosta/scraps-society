@@ -10,7 +10,6 @@ export default function CreateForm({ onSubmit }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    // Image Upload
     async function upload() {
       const form = event.currentTarget;
       const fileInput = Array.from(form.elements).find(
@@ -37,10 +36,12 @@ export default function CreateForm({ onSubmit }) {
     }
 
     const image_url = await upload();
-    const created_by = session?.user?.id;
+    // creates a username out of user full name
+    const created_by = session?.user?.name.split(" ").join("-").toLowerCase();
 
     onSubmit({ ...data, image_url, created_by });
   }
+
   return (
     <>
       <form
