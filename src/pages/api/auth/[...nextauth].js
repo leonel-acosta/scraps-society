@@ -35,7 +35,7 @@ export default NextAuth({
             name: profile.name,
             //transforms name into username
             username: profile.name.split(" ").join("-").toLowerCase(),
-            image: profile.picture,
+            image: profile.avatar_url || profile.picture,
           });
         }
         return true;

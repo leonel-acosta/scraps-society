@@ -10,7 +10,6 @@ export default function CreateForm({ onSubmit }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    // Image Upload
     async function upload() {
       const form = event.currentTarget;
       const fileInput = Array.from(form.elements).find(
