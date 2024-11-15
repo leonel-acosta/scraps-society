@@ -77,14 +77,23 @@ export default function CreateForm({ onSubmit }) {
         <label htmlFor="Category" className="mb-1 font-sm">
           Category
         </label>
-        <input
+        <select
           id="category"
           name="category"
           className="input rounded-full px-3 py-2 mb-3"
-          type="text"
-          placeholder="Material category"
-          required
-        />
+        >
+          <option value="Wood">Wood</option>
+          <option value="Metal">Metal</option>
+          <option value="Food">Food</option>
+          <option value="Rubber">Rubber</option>
+          <option value="Textile">Textile</option>
+          <option value="Computer Hardware">Computer Hardware</option>
+          <option value="Organic">Organic</option>
+          <option value="Glass">Glass</option>
+          <option value="Aluminum">Aluminum</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Other">Other</option>
+        </select>
         <label htmlFor="Category" className="mb-1 font-sm">
           Quantity
         </label>
@@ -92,7 +101,8 @@ export default function CreateForm({ onSubmit }) {
           id="quantity"
           name="quantity"
           className="input rounded-full px-3 py-2 mb-3"
-          type="number"
+          type="value"
+          min="0"
           placeholder="quantity"
           required
         />
@@ -106,7 +116,7 @@ export default function CreateForm({ onSubmit }) {
           className="input rounded-full px-3 py-2 mb-3"
           required
         >
-          <option name="Kilograms">Kg.</option>
+          <option name="Kilograms">kg.</option>
           <option name="grams">g.</option>
           <option name="meters">m.</option>
           <option name="liters">l.</option>
@@ -129,7 +139,8 @@ export default function CreateForm({ onSubmit }) {
           id="zipcode"
           name="zipcode"
           className="input rounded-full px-3 py-2 mb-3"
-          type="text"
+          type="value"
+          min="0"
           required
         />
         <label htmlFor="city" className="mb-1 font-sm">
@@ -151,6 +162,17 @@ export default function CreateForm({ onSubmit }) {
           className="input rounded-full px-3 py-2 mb-3"
           type="text"
           required
+        />
+        <label htmlFor="custom-information" className="mb-1 font-sm">
+          Additional information
+        </label>
+        <textarea
+          id="custom_information"
+          name="custom_information"
+          className="input rounded-full px-3 py-2 mb-3"
+          type="textarea"
+          required
+          rows="4"
         />
         <label htmlFor="pictures" className="mb-1 font-sm">
           Add pictures

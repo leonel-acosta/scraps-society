@@ -7,7 +7,6 @@ export default function CreateFormPage() {
   const { mutate } = useSWR("../api/posts");
 
   async function createPost(post) {
-    // Aca vamos a subir a BD -> ya tednriamos que tener todo la info.
     const response = await fetch("../api/posts", {
       method: "POST",
       headers: {
