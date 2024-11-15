@@ -30,11 +30,12 @@ export default function Filters({ onChange }) {
           <option value="Glass">Glass</option>
           <option value="Aluminum">Aluminum</option>
           <option value="Furniture">Furniture</option>
+          <option value="Other">Other</option>
         </select>
         <label> Unit</label>
         <select name="unit" id="unit">
           <option value="">All</option>
-          <option value="Kg.">kg.</option>
+          <option value="kg.">kg.</option>
           <option value="l.">l.</option>
           <option value="g.">g.</option>
           <option value="m.">m.</option>
