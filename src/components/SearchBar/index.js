@@ -1,12 +1,13 @@
 import styles from "./SearchBar.module.css";
 
-export default function SearchBar({ onChange, searchTerm }) {
+export default function SearchBar({ onChange, searchTerms }) {
   return (
     <div>
       <input
         className="text-center rounded-full p-5"
         placeholder="Search"
-        value={searchTerm}
+        name="searchTerms"
+        value={searchTerms}
         onChange={onChange}
         aria-label="Search bar"
       ></input>

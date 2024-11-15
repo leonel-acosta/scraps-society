@@ -13,28 +13,32 @@ export default function Filters({ onChange }) {
         <h4>Filter Options</h4>
         <label> Type of Cycle</label>
         <select name="cycle_type" id="cycle_type">
-          <option value="give">GIVE</option>
-          <option value="collect">COLLECT</option>
+          <option value="">All</option>
+          <option value="GIVE">GIVE</option>
+          <option value="COLLECT">COLLECT</option>
         </select>
         <label> Category</label>
-        <select name="Category" id="category">
-          <option value="wood">wood</option>
-          <option value="metal">metal</option>
-          <option value="food">food</option>
-          <option value="rubber">rubber</option>
+        <select name="category" id="category">
+          <option value="">All</option>
+          <option value="Wood">Wood</option>
+          <option value="Metal">Metal</option>
+          <option value="Food">Food</option>
+          <option value="Rubber">Rubber</option>
+          <option value="Textile">Textile</option>
+          <option value="Computer Hardware">Computer Hardware</option>
+          <option value="Organic">Organic</option>
+          <option value="Glass">Glass</option>
+          <option value="Aluminum">Aluminum</option>
+          <option value="Furniture">Furniture</option>
         </select>
         <label> Unit</label>
-        <select name="Unit" id="unit">
-          {" "}
-          <option value="kg.">kg.</option>
-          <option value="l.">kg.</option>
+        <select name="unit" id="unit">
+          <option value="">All</option>
+          <option value="Kg.">kg.</option>
+          <option value="l.">l.</option>
           <option value="g.">g.</option>
           <option value="m.">m.</option>
         </select>
-        <div className="flex flex-row gap-3 justify-end">
-          <Button className="w-1/2" accent text={"Apply filter"} />
-          <Button primary text={"Clear"} />
-        </div>
       </form>
     </>
   );

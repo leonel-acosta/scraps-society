@@ -24,30 +24,51 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [filterValues, setFilterValues] = useState({
+    searchTerms: [],
+    cycle_type: "",
+    category: "",
+    unit: "",
+  });
 
   const { data: posts, error } = useSWR("/api/posts", fetcher);
 
   const filteredData = posts
     ? posts.filter((item) =>
-        [
-          "title",
-          "category",
-          "quantity",
-          "unit",
-          "address",
-          "city",
-          "country",
-          "cycle_type",
-          "status",
-        ].some((key) =>
-          item[key]?.toLowerCase().includes(searchTerm.toLowerCase())
+        filterValues.searchTerms.every(
+          (term) =>
+            [
+              "title",
+              "category",
+              "quantity",
+              "unit",
+              "address",
+              "city",
+              "country",
+              "cycle_type",
+              "status",
+            ].some((key) =>
+              item[key]?.toLowerCase().includes(term.toLowerCase())
+            ) &&
+            (filterValues.cycle_type === "" ||
+              item.cycle_type === filterValues.cycle_type) &&
+            (filterValues.category === "" ||
+              item.category === filterValues.category) &&
+            (filterValues.unit === "" || item.unit === filterValues.unit)
         )
       )
     : [];
 
-  function handleChange(e) {
-    setSearchTerm(e.target.value);
+  function handleFilterChange(e) {
+    const { name, value } = e.target;
+
+    setFilterValues((prev) => ({
+      ...prev,
+      [name]:
+        name === "searchTerms"
+          ? value.trim().toLowerCase().split(/\s+/)
+          : value,
+    }));
   }
 
   if (error) return <p>Error loading posts.</p>;
@@ -56,8 +77,16 @@ export default function App({
   return (
     <NextAuthProvider session={session}>
       <Layout>
-        <Header onChange={handleChange} searchTerm={searchTerm} />
-        <Component {...pageProps} posts={posts} filteredData={filteredData} />
+        <Header
+          onChange={(e) => handleFilterChange(e)}
+          searchTerms={filterValues.searchTerms}
+        />
+        <Component
+          {...pageProps}
+          posts={posts}
+          filteredData={filteredData}
+          onChange={(e) => handleFilterChange(e)}
+        />
         <Footer />
       </Layout>
     </NextAuthProvider>
