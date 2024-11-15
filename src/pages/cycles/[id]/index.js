@@ -18,7 +18,7 @@ export default function CyclePage() {
     id ? fetcher : null
   );
   const post = data;
-  console.log(post);
+  console.log("Post info", post);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
 

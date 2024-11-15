@@ -6,6 +6,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 export default function UserProfile() {
   const router = useRouter();
   const { id } = router.query;
+
   const { data, error } = useSWR(
     id ? `/api/users/${id}` : null,
     id ? fetcher : null

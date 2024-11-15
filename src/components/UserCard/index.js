@@ -14,13 +14,12 @@ export default function UserCard({ user }) {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
 
-  console.log("user", data);
-  const { _id, name, username, image } = data;
+  const { username, name, image } = data;
 
   return (
     <>
       <div className="rounded-lg bg-primary p-5 text-center w-1/2">
-        <Link href={`/user/${_id}`}>
+        <Link href={`/user/${username}`}>
           <span>given by</span>
           <div className="flex flex-col justify-center gap-5 py-5">
             <Image
