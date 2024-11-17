@@ -5,6 +5,8 @@ import TransactionForm from "@/components/TransactionForm";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import UserCard from "@/components/UserCard";
+import Badge from "@/components/Badge";
+import Tag from "@/components/Tag";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -61,7 +63,9 @@ export default function CyclePage() {
     <>
       <section className="flex justify-center">
         <container className="flex flex-col sm:flex-row justify-center w-3/4 p-10 m-5 bg-secondary rounded-lg">
-          <div className="w-2/4">
+          <div className="w-2/4 relative">
+            <Badge cycle_type={post.cycle_type} text={post.cycle_type} />
+
             <Image
               src={post.image_url}
               width={500}
@@ -76,9 +80,8 @@ export default function CyclePage() {
               className="rounded-lg text-center"
             />
           </div>
-          <div className="sm:w-2/4 flex flex-col py-4 gap-5">
-            {" "}
-            <h5>{post.status}</h5>
+          <div className="sm:w-2/4 flex flex-col py-4 gap-5 relative">
+            <h3>{post.status} </h3>
             <h2>{post.title}</h2>
             <h5>
               | ICON | {post.address} | {post.zipcode} {post.city} |{" "}
@@ -90,6 +93,8 @@ export default function CyclePage() {
                 Quantity: {post.quantity} {post.unit}
               </li>
             </ul>
+            <Tag text={post.status} />
+
             <UserCard user={post.created_by} />
             <TransactionForm post={post} onClick={editPost} />
             {session && session.user.id === post.created_by ? (
