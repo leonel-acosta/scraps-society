@@ -99,7 +99,7 @@ export default function CyclePage() {
             />
           </div>
           <div className="sm:w-2/4 flex flex-col py-4 gap-5">
-            <WishlistButton onClick={onToggleWishlist} />
+            <WishlistButton onClick={onToggleWishlist} post={post} />
             <h5>{post.status}</h5>
             <h2>{post.title}</h2>
             <h5>

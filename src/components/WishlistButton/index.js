@@ -1,7 +1,7 @@
 import Button from "../Button";
 import { useSession } from "next-auth/react";
 
-export default function WishlistButton({ onWishlist, onClick }) {
+export default function WishlistButton({ onClick, post }) {
   const { status: sessionStatus, data: session } = useSession();
 
   function handleWishlist() {
@@ -12,7 +12,11 @@ export default function WishlistButton({ onWishlist, onClick }) {
   return (
     <Button
       onClick={handleWishlist}
-      text={onWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+      text={
+        post.wishlist.includes(session?.user?.id)
+          ? "Remove from Wishlist"
+          : "Add to Wishlist"
+      }
       primary
     ></Button>
   );
