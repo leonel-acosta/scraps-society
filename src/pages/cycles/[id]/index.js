@@ -5,6 +5,7 @@ import TransactionForm from "@/components/TransactionForm";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import UserCard from "@/components/UserCard";
+import WishlistButton from "@/components/WishlistButton";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -31,6 +32,27 @@ export default function CyclePage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedPost),
+      });
+
+      if (response.ok) {
+        console.log("Post successfully updated");
+      } else {
+        console.error("Failed to update post");
+      }
+    } catch (error) {
+      console.error("Error updating post:", error);
+    }
+  }
+
+  async function onToggleWishlist(wishlist) {
+    console.log("userId toggle", wishlist);
+    try {
+      const response = await fetch(`/api/posts/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ wishlist }),
       });
 
       if (response.ok) {
@@ -77,7 +99,7 @@ export default function CyclePage() {
             />
           </div>
           <div className="sm:w-2/4 flex flex-col py-4 gap-5">
-            {" "}
+            <WishlistButton onClick={onToggleWishlist} />
             <h5>{post.status}</h5>
             <h2>{post.title}</h2>
             <h5>
