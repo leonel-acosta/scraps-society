@@ -12,6 +12,7 @@
     "@next/font": "^14.2.15",
     "cloudinary": "^2.5.1",
     "formidable": "^3.5.2",
+    "mapbox-gl": "^3.8.0",
     "mongodb": "^6.10.0",
     "mongoose": "^8.8.1",
     "next": "15.0.2",
