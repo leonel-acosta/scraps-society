@@ -1,6 +1,8 @@
-import UpdateForm from "@/components/UpdateForm";
+import UpdateForm from "@/components/ProfileForm";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function UpdateProfile() {
   const router = useRouter();
