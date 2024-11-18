@@ -7,7 +7,7 @@ export default async function handler(request, response) {
     console.log("Database connected");
   } catch (error) {
     console.log("Database not connected");
-    return response.satus(500).json({ error: "Database connection failed" });
+    return response.status(500).json({ error: "Database connection failed" });
   }
   const { id } = request.query;
 

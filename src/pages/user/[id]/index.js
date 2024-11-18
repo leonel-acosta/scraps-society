@@ -4,6 +4,7 @@ import useSWR, { mutate } from "swr";
 import UpdateForm from "@/components/ProfileForm";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Wishlist from "@/components/Wishlist";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -55,7 +56,7 @@ export default function UserProfile() {
 
   if (session && session.user.id === user._id) {
     return (
-      <>
+      <section>
         <section className="flex flex-row">
           <div>
             {" "}
@@ -79,10 +80,15 @@ export default function UserProfile() {
             <p>{user.description}</p>
           </div>
         </section>
+        <section>
+          {" "}
+          <Wishlist />
+        </section>
+        <section></section>
         <UpdateForm onSubmit={updateUser} defaultData={user} />
 
         <Button text="delete user" onClick={deleteUser} />
-      </>
+      </section>
     );
   } else {
     return (
