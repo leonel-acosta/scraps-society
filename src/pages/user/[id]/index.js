@@ -86,7 +86,6 @@ export default function UserProfile() {
             </div>
           </section>
           <section>
-            {" "}
             <Wishlist />
           </section>
           <section></section>
@@ -98,18 +97,22 @@ export default function UserProfile() {
     );
   } else {
     return (
-      <div>
-        <h2>{user.name}</h2>
-        <h3>
-          {user.city}, {user.country}
-        </h3>
-        <h3>Contact info:</h3>
-        <p>
-          phone: {user.phone} | Email: {user.email}
-        </p>
-        <h3>About</h3>
-        <p>{user.description}</p>
-      </div>
+      <>
+        <Header />
+        <PageTitle text={"Profile"} />
+        <div>
+          <h2>{user.name}</h2>
+          <h3>
+            {user.city}, {user.country}
+          </h3>
+          <h3>Contact info:</h3>
+          <p>
+            phone: {user.phone} | Email: {user.email}
+          </p>
+          <h3>About</h3>
+          <p>{user.description}</p>
+        </div>
+      </>
     );
   }
 }

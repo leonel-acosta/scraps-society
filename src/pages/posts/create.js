@@ -19,7 +19,7 @@ export default function CreateFormPage() {
     if (response.ok) {
       mutate();
       console.log("New post created:", post);
-      router.push("../cycles");
+      router.push("../posts");
     } else {
       console.error("Failed to add post");
     }

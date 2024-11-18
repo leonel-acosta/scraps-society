@@ -36,8 +36,7 @@ export default function CreateForm({ onSubmit }) {
     }
 
     const image_url = await upload();
-    // creates a username out of user full name
-    const created_by = session?.user?.name.split(" ").join("-").toLowerCase();
+    const created_by = session?.user?.id;
 
     onSubmit({ ...data, image_url, created_by });
   }
@@ -71,7 +70,7 @@ export default function CreateForm({ onSubmit }) {
           className="input rounded-full px-3 py-2 mb-3"
           required
         >
-          <option name="give">GIVE</option>
+          <option name="giveaway">GIVEAWAY</option>
           <option name="collect">COLLECT</option>
         </select>
 
