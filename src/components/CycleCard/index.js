@@ -20,7 +20,7 @@ export default function CycleCard({
   return (
     <card className="flex flex-col sm:flex-row p-5 justify-around bg-secondary mb-2 rounded-lg gap-3">
       <div
-        className="bg-primary rounded-lg col-6 align-center content-center items-center"
+        className="bg-primary rounded-lg col-6"
         style={{ position: "relative" }}
       >
         <Badge cycle_type={cycle_type} text={cycle_type} />
@@ -40,16 +40,15 @@ export default function CycleCard({
       </div>
       <div className="align-center content-center items-center gap-5">
         <Tag text={status} />
-        <h3>{title}</h3>
+        <h3 className="uppercase">{title}</h3>
         <span>
-          {city} {country}
+          {city} {zipcode}
         </span>
         <ul>
           <li>Category: {category}</li>
           <li>
             Quantity: {quantity} {unit}
           </li>
-          <li>Status: {status}</li>
           <li></li>
         </ul>
       </div>

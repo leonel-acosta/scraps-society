@@ -62,8 +62,8 @@ export default function CyclePage() {
   return (
     <>
       <section className="flex justify-center">
-        <container className="flex flex-col sm:flex-row justify-center w-3/4 p-10 m-5 bg-secondary rounded-lg">
-          <div className="w-2/4 relative">
+        <div className="flex flex-col md:flex-row gap-5 justify-center md:w-3/4 p-10 m-5 md:m-5 bg-secondary rounded-lg">
+          <div className="md:w-2/4 relative">
             <Badge cycle_type={post.cycle_type} text={post.cycle_type} />
 
             <Image
@@ -80,12 +80,11 @@ export default function CyclePage() {
               className="rounded-lg text-center"
             />
           </div>
-          <div className="sm:w-2/4 flex flex-col py-4 gap-5 relative">
-            <h3>{post.status} </h3>
-            <h2>{post.title}</h2>
+          <div className="md:w-2/4 flex flex-col py-4 gap-5 relative">
+            <Tag text={post.status} />
+            <h2 className="uppercase">{post.title}</h2>
             <h5>
-              | ICON | {post.address} | {post.zipcode} {post.city} |{" "}
-              {post.country}
+              {post.address},{post.zipcode}, {post.city} | {post.country}
             </h5>
             <ul>
               <li>Category: {post.category}</li>
@@ -93,9 +92,12 @@ export default function CyclePage() {
                 Quantity: {post.quantity} {post.unit}
               </li>
             </ul>
-            <Tag text={post.status} />
 
-            <UserCard user={post.created_by} />
+            <UserCard
+              user={post.created_by}
+              status={post.status}
+              type={post.cycle_type}
+            />
             <TransactionForm post={post} onClick={editPost} />
             {session && session.user.id === post.created_by ? (
               <Button onClick={deletePost} text="delete"></Button>
@@ -103,7 +105,23 @@ export default function CyclePage() {
               ""
             )}
           </div>
-        </container>
+        </div>
+      </section>
+      <section className="flex justify-center">
+        <div className="flex flex-col gap-5 justify-center md:w-3/4 p-10 m-5 md:m-5 bg-secondary rounded-lg">
+          <h3>Description</h3>
+          <p className="text-justify">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec
+            arcu nibh. Maecenas et tellus posuere nunc tincidunt ultricies eget
+            quis quam. Cras scelerisque congue odio id lacinia. Ut ultrices, dui
+            ac scelerisque dictum, magna tellus imperdiet sapien, eget posuere
+            magna tortor a urna. Aliquam lobortis, quam non maximus gravida, sem
+            massa vehicula nibh, quis mollis neque lacus eget sapien. Donec
+            fermentum faucibus sem, a cursus nisl. Etiam nec velit mi. Morbi
+            venenatis lorem dui, at consectetur ipsum tristique eu. Fusce
+            efficitur ligula sed arcu bibendum, at faucibus quam aliquam.{" "}
+          </p>
+        </div>
       </section>
     </>
   );
