@@ -18,7 +18,7 @@ export default function LoginButton() {
     <>
       <div className="flex flex-row items-center gap-2">
         Not signed in <br />
-        <Button onClick={() => signIn()} text={"Sign in"}></Button>
+        <Button primary onClick={() => signIn()} text={"Sign in"}></Button>
       </div>
     </>
   );

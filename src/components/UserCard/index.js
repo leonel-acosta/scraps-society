@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function UserCard({ user }) {
+export default function UserCard({ user, status, type }) {
   const { data, error } = useSWR(
     user ? `/api/users/${user}` : null,
     user ? fetcher : null
@@ -18,10 +18,10 @@ export default function UserCard({ user }) {
 
   return (
     <>
-      <div className="rounded-lg bg-primary p-5 text-center w-1/2">
+      <div className="rounded-lg bg-primary p-5 text-center w-1/2 md:w-1/2 border-2">
+        <span>{(type = "give" ? "collected by" : "given by")}</span>
         <Link href={`/user/${username}`}>
-          <span>given by</span>
-          <div className="flex flex-col justify-center gap-5 py-5">
+          <div className="flex flex-row justify-center gap-5 py-5 items-center ">
             <Image
               src={image}
               width={60}
@@ -29,8 +29,7 @@ export default function UserCard({ user }) {
               className="rounded-full"
               alt={name}
             />
-
-            <h4>{name}</h4>
+            <h5>{name}</h5>
           </div>
         </Link>
       </div>

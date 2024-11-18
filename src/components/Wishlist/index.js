@@ -1,4 +1,4 @@
-import CycleCard from "@/components/CycleCard";
+import PostCard from "@/components/PostCard";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -31,8 +31,8 @@ export default function Wishlist() {
             <ul role="list">
               {wishlistPosts.map((post) => (
                 <li key={post.id}>
-                  <Link href={`/cycles/${post._id}`}>
-                    <CycleCard
+                  <Link href={`/posts/${post._id}`}>
+                    <PostCard
                       id={post._id}
                       title={post.title}
                       address={post.address}

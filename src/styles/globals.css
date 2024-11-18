@@ -84,12 +84,32 @@ p {
   font-size: 0.8em;
 }
 
+.primary {
+  color: var(--primary-color);
+}
+
+.secondary {
+  color: var(--secondary-color);
+}
+
+.tertiary {
+  color: var(--tertiary-color);
+}
+
+.accent {
+  color: var(--accent-color);
+}
+
 .bg-primary {
   background-color: var(--secondary-color);
 }
 
 .bg-secondary {
   background-color: var(--primary-color);
+}
+
+.bg-tertiary {
+  background-color: var(--tertiary-color);
 }
 
 .bg-accent {
