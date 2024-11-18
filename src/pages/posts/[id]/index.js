@@ -78,7 +78,7 @@ export default function PostPage() {
       await fetch(`/api/posts/${id}`, {
         method: "DELETE",
       });
-      router.push("/cycles");
+      router.push("/posts");
       console.log("Post", post.id, "succesfully deleted");
     }
   }

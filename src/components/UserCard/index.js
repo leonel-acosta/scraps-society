@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function UserCard({ user, status, type }) {
+export default function UserCard({ user, type }) {
   const { data, error } = useSWR(
     user ? `/api/users/${user}` : null,
     user ? fetcher : null
@@ -19,7 +19,7 @@ export default function UserCard({ user, status, type }) {
   return (
     <>
       <div className="rounded-lg bg-primary p-5 text-center w-1/2 md:w-1/2 border-2">
-        <span>{(type = "give" ? "collected by" : "given by")}</span>
+        <span>{({ type } = "giveaway" ? "collected by" : "given by")}</span>
         <Link href={`/user/${username}`}>
           <div className="flex flex-row justify-center gap-5 py-5 items-center ">
             <Image
