@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import UserCard from "@/components/UserCard";
 import Badge from "@/components/Badge";
 import Tag from "@/components/Tag";
+import WishlistButton from "@/components/WishlistButton";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -33,6 +34,27 @@ export default function PostPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedPost),
+      });
+
+      if (response.ok) {
+        console.log("Post successfully updated");
+      } else {
+        console.error("Failed to update post");
+      }
+    } catch (error) {
+      console.error("Error updating post:", error);
+    }
+  }
+
+  async function onToggleWishlist(wishlist) {
+    console.log("userId toggle", wishlist);
+    try {
+      const response = await fetch(`/api/posts/${id}/wishlist`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ wishlist }),
       });
 
       if (response.ok) {
@@ -91,6 +113,7 @@ export default function PostPage() {
                 Quantity: {post.quantity} {post.unit}
               </li>
             </ul>
+            <WishlistButton onClick={onToggleWishlist} post={post} />
 
             <UserCard
               user={post.created_by}
