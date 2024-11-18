@@ -1,8 +1,10 @@
+import Header from "@/components/Header";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
+      <Header />
       <div className="gap-2 flex flex-col justify-center text-center py-10">
         <Link href="/api/users">USERS API</Link>
         <Link href="/api/posts">posts API</Link>

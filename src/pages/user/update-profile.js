@@ -1,3 +1,5 @@
+import Header from "@/components/Header";
+import PageTitle from "@/components/PageTitle";
 import UpdateForm from "@/components/ProfileForm";
 import { useRouter } from "next/router";
 import useSWR from "swr";
@@ -31,7 +33,8 @@ export default function UpdateProfilePage() {
 
   return (
     <>
-      <h2>Update your profile</h2>
+      <Header />
+      <PageTitle text={"Update your profile"} />
       <UpdateForm onSubmit={updateUser} defaultData={user} />
     </>
   );

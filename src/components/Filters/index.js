@@ -8,9 +8,10 @@ export default function Filters({ onChange }) {
         name="filters"
         id="filters"
         onChange={onChange}
-        className="flex flex-col bg-secondary rounded-lg p-5 gap-5"
+        className="flex flex-col bg-secondary rounded-lg gap-3 p-10"
       >
-        <h4>Filter Options</h4>
+        <h4 className="uppercase mb-4">Filter Options</h4>
+        <hr className="uppercase mb-4" />
         <label> Type of Cycle</label>
         <select name="cycle_type" id="cycle_type">
           <option value="">All</option>
@@ -30,6 +31,7 @@ export default function Filters({ onChange }) {
           <option value="Glass">Glass</option>
           <option value="Aluminum">Aluminum</option>
           <option value="Furniture">Furniture</option>
+          <option value="Paper">Paper</option>
           <option value="Other">Other</option>
         </select>
         <label> Unit</label>
@@ -39,6 +41,7 @@ export default function Filters({ onChange }) {
           <option value="l.">l.</option>
           <option value="g.">g.</option>
           <option value="m.">m.</option>
+          <option value="units">units</option>
         </select>
       </form>
     </>

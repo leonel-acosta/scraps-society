@@ -5,6 +5,8 @@ import UpdateForm from "@/components/ProfileForm";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Wishlist from "@/components/Wishlist";
+import Header from "@/components/Header";
+import PageTitle from "@/components/PageTitle";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -56,39 +58,43 @@ export default function UserProfile() {
 
   if (session && session.user.id === user._id) {
     return (
-      <section>
-        <section className="flex flex-row">
-          <div>
-            {" "}
-            <Image
-              src={user.profile_picture}
-              alt={user.username}
-              width={300}
-              height={300}
-            ></Image>
-          </div>
-          <div>
-            <h2>{user.name}</h2>
-            <h5>
-              {user.city}, {user.country}
-            </h5>
-            <h3>Contact info:</h3>
-            <p>
-              phone: {user.phone} | Email: {user.email}
-            </p>
-            <h3>About</h3>
-            <p>{user.description}</p>
-          </div>
-        </section>
+      <>
+        <Header />
+        <PageTitle text={"Profile"} />
         <section>
-          {" "}
-          <Wishlist />
-        </section>
-        <section></section>
-        <UpdateForm onSubmit={updateUser} defaultData={user} />
+          <section className="flex flex-row">
+            <div>
+              {" "}
+              <Image
+                src={user.profile_picture}
+                alt={user.username}
+                width={300}
+                height={300}
+              ></Image>
+            </div>
+            <div>
+              <h2>{user.name}</h2>
+              <h5>
+                {user.city}, {user.country}
+              </h5>
+              <h3>Contact info:</h3>
+              <p>
+                phone: {user.phone} | Email: {user.email}
+              </p>
+              <h3>About</h3>
+              <p>{user.description}</p>
+            </div>
+          </section>
+          <section>
+            {" "}
+            <Wishlist />
+          </section>
+          <section></section>
+          <UpdateForm onSubmit={updateUser} defaultData={user} />
 
-        <Button text="delete user" onClick={deleteUser} />
-      </section>
+          <Button text="delete user" onClick={deleteUser} />
+        </section>
+      </>
     );
   } else {
     return (

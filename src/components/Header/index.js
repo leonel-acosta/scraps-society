@@ -3,14 +3,21 @@ import Button from "../Button";
 import SearchBar from "../SearchBar";
 import UserInfo from "../UserInfo";
 import Link from "next/link";
+import NavBar from "../NavBar";
+import Logo from "../Logo";
 
-export default function Header({ onChange, searchTerm }) {
+export default function Header({ onChange, searchTerm, searchBar }) {
   return (
-    <div className="p-5 bg-secondary justify-between flex flex-row static top-0 w-full">
+    <div className="p-5 bg-secondary justify-between flex flex-row sticky top-0 w-full z-10">
       <Link href="./">
-        <h1>SCRAPS SOCIETY</h1>
+        <Logo />
       </Link>
-      <SearchBar onChange={onChange} searchTerm={searchTerm} />
+      {searchBar ? (
+        <SearchBar onChange={onChange} searchTerm={searchTerm} />
+      ) : (
+        ""
+      )}
+      <NavBar />
       <UserInfo />
     </div>
   );

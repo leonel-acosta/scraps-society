@@ -1,4 +1,6 @@
 import CreateForm from "@/components/CycleForm";
+import Header from "@/components/Header";
+import PageTitle from "@/components/PageTitle";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
@@ -25,8 +27,8 @@ export default function CreateFormPage() {
 
   return (
     <>
-      <div className="flex flex-column justify-center"></div>
-      <h2>Create new cycle</h2>
+      <Header />
+      <PageTitle text={"Create new cycle"} />
       <div className="bg-secondary p-5 rounded-lg m-5 w-1/2">
         <CreateForm onSubmit={createPost} />
       </div>
