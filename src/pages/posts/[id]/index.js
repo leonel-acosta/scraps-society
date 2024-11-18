@@ -8,6 +8,8 @@ import UserCard from "@/components/UserCard";
 import Badge from "@/components/Badge";
 import Tag from "@/components/Tag";
 import WishlistButton from "@/components/WishlistButton";
+import Header from "@/components/Header";
+import PageTitle from "@/components/PageTitle";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -83,6 +85,7 @@ export default function PostPage() {
 
   return (
     <>
+      <Header />
       <section className="flex justify-center">
         <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 justify-center lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
           <div className="lg:w-2/4 relative">

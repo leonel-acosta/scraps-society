@@ -77,15 +77,12 @@ export default function App({
   return (
     <NextAuthProvider session={session}>
       <Layout>
-        <Header
-          onChange={(e) => handleFilterChange(e)}
-          searchTerms={filterValues.searchTerms}
-        />
         <Component
           {...pageProps}
           posts={posts}
           filteredData={filteredData}
-          onChange={(e) => handleFilterChange(e)}
+          onChange={handleFilterChange}
+          searchTerms={filterValues.searchTerms}
         />
         <Footer />
       </Layout>
