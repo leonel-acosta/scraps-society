@@ -18,9 +18,9 @@ export default function CycleCard({
   status,
 }) {
   return (
-    <card className="flex flex-col sm:flex-row p-5 justify-around bg-secondary mb-2 rounded-lg gap-3">
+    <div className="flex flex-col md:flex-row p-5 justify-between bg-secondary mb-2 rounded-lg gap-10">
       <div
-        className="bg-primary rounded-lg col-6"
+        className="bg-primary rounded-lg col-6 lg:w-1/2"
         style={{ position: "relative" }}
       >
         <Badge cycle_type={cycle_type} text={cycle_type} />
@@ -38,9 +38,9 @@ export default function CycleCard({
           className="rounded-lg text-center"
         />
       </div>
-      <div className="align-center content-center items-center gap-5">
+      <div className="py-5 gap-5 lg:w-1/2">
         <Tag text={status} />
-        <h3 className="uppercase">{title}</h3>
+        <h3 className="uppercase mb-2">{title}</h3>
         <span>
           {city} {zipcode}
         </span>
@@ -52,6 +52,6 @@ export default function CycleCard({
           <li></li>
         </ul>
       </div>
-    </card>
+    </div>
   );
 }

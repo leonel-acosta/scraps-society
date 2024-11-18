@@ -10,7 +10,7 @@ import Tag from "@/components/Tag";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function CyclePage() {
+export default function PostPage() {
   const { status: sessionStatus, data: session } = useSession();
 
   const router = useRouter();
@@ -62,10 +62,9 @@ export default function CyclePage() {
   return (
     <>
       <section className="flex justify-center">
-        <div className="flex flex-col md:flex-row gap-5 justify-center md:w-3/4 p-10 m-5 md:m-5 bg-secondary rounded-lg">
-          <div className="md:w-2/4 relative">
+        <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 justify-center lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
+          <div className="lg:w-2/4 relative">
             <Badge cycle_type={post.cycle_type} text={post.cycle_type} />
-
             <Image
               src={post.image_url}
               width={500}
@@ -80,9 +79,9 @@ export default function CyclePage() {
               className="rounded-lg text-center"
             />
           </div>
-          <div className="md:w-2/4 flex flex-col py-4 gap-5 relative">
+          <div className="lg:w-2/4 flex flex-col py-4 gap-5 relative">
             <Tag text={post.status} />
-            <h2 className="uppercase">{post.title}</h2>
+            <h2 className="uppercase mb-2">{post.title}</h2>
             <h5>
               {post.address},{post.zipcode}, {post.city} | {post.country}
             </h5>
@@ -108,7 +107,7 @@ export default function CyclePage() {
         </div>
       </section>
       <section className="flex justify-center">
-        <div className="flex flex-col gap-5 justify-center md:w-3/4 p-10 m-5 md:m-5 bg-secondary rounded-lg">
+        <div className="flex flex-col gap-5 justify-center lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
           <h3>Description</h3>
           <p className="text-justify">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec
@@ -119,7 +118,7 @@ export default function CyclePage() {
             massa vehicula nibh, quis mollis neque lacus eget sapien. Donec
             fermentum faucibus sem, a cursus nisl. Etiam nec velit mi. Morbi
             venenatis lorem dui, at consectetur ipsum tristique eu. Fusce
-            efficitur ligula sed arcu bibendum, at faucibus quam aliquam.{" "}
+            efficitur ligula sed arcu bibendum, at faucibus quam aliquam.
           </p>
         </div>
       </section>
