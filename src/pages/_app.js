@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import localFont from "next/font/local";
 import Layout from "@/components/Layout";
-import { NextAuthProvider } from "./Providers";
+import NextAuthProvider from "./Providers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
