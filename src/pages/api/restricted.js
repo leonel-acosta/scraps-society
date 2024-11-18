@@ -1,5 +1,5 @@
-/* import { getServerSession } from "next-auth/next";
-import authOptions from "@/pages/api/auth/[...nextauth]";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 export default async function handler(req, res) {
   const session = await getServerSession(req, res, authOptions);
@@ -15,4 +15,4 @@ export default async function handler(req, res) {
         "You must be signed in to view the protected content on this page.",
     });
   }
-}*/
+}
