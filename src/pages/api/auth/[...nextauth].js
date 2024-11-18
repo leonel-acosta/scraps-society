@@ -4,7 +4,7 @@ import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 
-export default NextAuth({
+export const authOptions = {
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID,
@@ -33,7 +33,6 @@ export default NextAuth({
           const user = await User.create({
             email: profile.email,
             name: profile.name,
-            //transforms name into username
             username: profile.name.split(" ").join("-").toLowerCase(),
             image: profile.avatar_url || profile.picture,
           });
@@ -45,4 +44,6 @@ export default NextAuth({
       }
     },
   },
-});
+};
+
+export default (req, res) => NextAuth(req, res, authOptions);
