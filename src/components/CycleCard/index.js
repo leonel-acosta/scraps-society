@@ -1,13 +1,14 @@
+import Badge from "../Badge";
+import Tag from "../Tag";
+import WishlistButton from "../WishlistButton";
 import styles from "./CycleCard.module.css";
 import Image from "next/image";
 
 export default function CycleCard({
   id,
   title,
-  address,
   city,
   zipcode,
-  country,
   cycle_type,
   image,
   quantity,
@@ -16,39 +17,40 @@ export default function CycleCard({
   status,
 }) {
   return (
-    <card className="flex flex-col sm:flex-row p-5 justify-around bg-secondary mb-2 rounded-lg gap-3">
+    <div className="flex flex-col sm:flex-row p-5 justify-around bg-secondary mb-2 rounded-lg gap-3">
       <div
         className="bg-primary rounded-lg col-6"
         style={{ position: "relative" }}
       >
+        <Badge cycle_type={cycle_type} text={cycle_type} />
         <Image
           src={image}
-          width={260}
-          height={260}
+          width={300}
+          height={300}
           alt={title}
-          sizes="260px"
+          sizes="300px"
           style={{
-            width: "260px",
-            height: "260px",
+            width: "300px",
+            height: "300px",
             objectFit: "cover",
           }}
           className="rounded-lg text-center"
         />
       </div>
-      <div>
-        <span className="meta">{cycle_type}</span>
-        <h3>{title}</h3>
+      <div className="align-center content-center items-center gap-5">
+        <Tag text={status} />
+        <h3 className="uppercase">{title}</h3>
         <span>
-          {address}, {zipcode} {city} {country}
+          {city} {zipcode}
         </span>
         <ul>
           <li>Category: {category}</li>
           <li>
             Quantity: {quantity} {unit}
           </li>
-          <li>Status: {status}</li>
+          <li></li>
         </ul>
       </div>
-    </card>
+    </div>
   );
 }

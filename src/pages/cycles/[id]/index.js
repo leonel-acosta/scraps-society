@@ -47,7 +47,7 @@ export default function CyclePage() {
   async function onToggleWishlist(wishlist) {
     console.log("userId toggle", wishlist);
     try {
-      const response = await fetch(`/api/posts/${id}`, {
+      const response = await fetch(`/api/posts/${id}/wishlist`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
