@@ -4,7 +4,7 @@ import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function UpdateProfile() {
+export default function UpdateProfilePage() {
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
