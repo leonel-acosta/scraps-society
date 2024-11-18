@@ -39,7 +39,7 @@ export default function LoginForm() {
 
         <span className="text-center"> or</span>
         <span className="text-center mb-3 font-xs">
-          Don't you have an account? <Link href="./register">Sign up</Link>
+          {`Don't you have an account?`} <Link href="./register">Sign up</Link>
         </span>
       </form>
     </>
