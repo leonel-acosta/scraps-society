@@ -7,7 +7,7 @@ export default function PostsList({ filteredData }) {
     <ul role="list">
       {filteredData.map((post) => {
         return (
-          <li key={post.id}>
+          <li key={post._id}>
             <Link href={`/posts/${post._id}`}>
               <PostCard
                 id={post._id}

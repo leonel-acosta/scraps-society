@@ -60,7 +60,6 @@ export default function UserProfile() {
   if (session && session.user.id === user._id) {
     return (
       <>
-        <Header />
         <PageTitle text={`${user.name}'s profile`} />
         <section className="m-0 flex flex-col xl:flex-row">
           <div className="bg-tertiary primary p-10 hidden xl:block left-0 md:h-auto lg:w-60">

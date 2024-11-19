@@ -18,7 +18,6 @@ export default function CreateFormPage() {
     });
     if (response.ok) {
       mutate();
-      console.log("New post created:", post);
       router.push("../posts");
     } else {
       console.error("Failed to add post");
@@ -27,11 +26,8 @@ export default function CreateFormPage() {
 
   return (
     <>
-      <Header />
       <PageTitle text={"Create new cycle"} />
-      <div className="bg-secondary p-5 rounded-lg m-5 w-1/2">
-        <CreateForm onSubmit={createPost} />
-      </div>
+      <CreateForm onSubmit={createPost} />
     </>
   );
 }
