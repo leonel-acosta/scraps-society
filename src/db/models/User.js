@@ -15,7 +15,6 @@ const userSchema = new Schema(
     city: { type: String },
     country: { type: String },
     zipcode: { type: String },
-    wishlist: [{ type: String }],
   },
   { timestamps: true }
 );

@@ -7,11 +7,10 @@ export default function UserInfo() {
   if (status === "authenticated") {
     return (
       <div className="flex flex-row items-center gap-4">
-        <h5>{session?.user?.name}</h5>
         <Image
           src={session?.user?.image}
-          width={68}
-          height={68}
+          width={60}
+          height={60}
           className="rounded-full border-2 border-black"
           alt="User Image"
         ></Image>

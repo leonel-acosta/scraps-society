@@ -6,28 +6,25 @@ import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function Wishlist({ user }) {
-  const { status: sessionStatus, data: session } = useSession();
-
+export default function UserPostsList({ user }) {
   const router = useRouter();
   const { id } = router.query;
 
   const { data, error } = useSWR(id ? `/api/posts` : null, id ? fetcher : null);
   const posts = data;
-
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
 
-  const wishlistPosts = posts.filter((post) => post.wishlist.includes(user));
+  const userpostsList = posts.filter((post) => post.created_by === user._id);
 
   return (
     <>
       <section>
-        <h3 className="text-center mb-5">Wishlist</h3>
+        <h3 className="text-center mb-5">User Cycles</h3>
         <div className="flex flex-row justify-center">
           <div className="flex justify-center lg:w-3/4">
             <ul role="list">
-              {wishlistPosts.map((post) => (
+              {userpostsList.map((post) => (
                 <li key={post.id}>
                   <Link href={`/posts/${post._id}`}>
                     <PostCard

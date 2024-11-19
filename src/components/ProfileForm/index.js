@@ -56,7 +56,7 @@ export default function profileForm({ onSubmit }) {
         <input
           id="name"
           name="name"
-          className="input rounded-full px-3 py-2 mb-3"
+          className="input rounded-lg px-3 py-2 mb-3"
           type="text"
           placeholder="Enter your name"
         />
@@ -66,7 +66,7 @@ export default function profileForm({ onSubmit }) {
         <input
           id="file"
           name="file"
-          className="input rounded-full px-3 py-2 mb-3"
+          className="input rounded-lg px-3 py-2 mb-3"
           type="file"
         />
         <label htmlFor="phone" className="mb-1 font-sm">
@@ -75,7 +75,7 @@ export default function profileForm({ onSubmit }) {
         <input
           id="phone"
           name="phone"
-          className="input rounded-full px-3 py-2 mb-3"
+          className="input rounded-lg px-3 py-2 mb-3"
           type="tel"
           placeholder="+49 176 1234 5678"
         />
@@ -85,7 +85,7 @@ export default function profileForm({ onSubmit }) {
         <input
           id="city"
           name="city"
-          className="input rounded-full px-3 py-2 mb-3"
+          className="input rounded-lg px-3 py-2 mb-3"
           type="text"
           placeholder="Berlin"
         />
@@ -95,7 +95,7 @@ export default function profileForm({ onSubmit }) {
         <input
           id="zipcode"
           name="zipcode"
-          className="input rounded-full px-3 py-2 mb-3"
+          className="input rounded-lg px-3 py-2 mb-3"
           type="number"
           placeholder="12345"
         />
@@ -105,7 +105,7 @@ export default function profileForm({ onSubmit }) {
         <input
           id="country"
           name="country"
-          className="input rounded-full px-3 py-2 mb-3"
+          className="input rounded-lg px-3 py-2 mb-3"
           type="text"
           placeholder="Germany"
         />
@@ -115,12 +115,12 @@ export default function profileForm({ onSubmit }) {
         <textarea
           id="description"
           name="description"
-          className="input rounded-full px-3 py-2 mb-3"
+          className="input rounded-lg px-3 py-2 mb-3"
           placeholder="Tell us something about yourself"
           rows={4}
           maxLength={300}
         />
-        <Button text={"Submit"} primary />
+        <Button text={"Submit"} secondary />
       </form>
     </>
   );
