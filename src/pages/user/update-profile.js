@@ -33,7 +33,6 @@ export default function UpdateProfilePage() {
 
   return (
     <>
-      <Header />
       <PageTitle text={"Update your profile"} />
       <UpdateForm onSubmit={updateUser} defaultData={user} />
     </>

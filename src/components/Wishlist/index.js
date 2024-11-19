@@ -28,7 +28,7 @@ export default function Wishlist({ user }) {
           <div className="flex justify-center lg:w-3/4">
             <ul role="list">
               {wishlistPosts.map((post) => (
-                <li key={post.id}>
+                <li key={post._id}>
                   <Link href={`/posts/${post._id}`}>
                     <PostCard
                       id={post._id}

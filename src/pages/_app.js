@@ -48,7 +48,7 @@ export default function App({
               "cycle_type",
               "status",
             ].some((key) =>
-              item[key]?.toLowerCase().includes(term.toLowerCase())
+              item[key]?.toString().toLowerCase().includes(term.toLowerCase())
             ) &&
             (filterValues.cycle_type === "" ||
               item.cycle_type === filterValues.cycle_type) &&
@@ -77,6 +77,7 @@ export default function App({
   return (
     <NextAuthProvider session={session}>
       <Layout>
+        <Header />
         <Component
           {...pageProps}
           posts={posts}

@@ -23,12 +23,10 @@ export default function PostPage() {
     id ? fetcher : null
   );
   const post = data;
-  console.log("Post info", post);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
 
   async function editPost(updatedPost) {
-    console.log("updatedPost", updatedPost);
     try {
       const response = await fetch(`/api/posts/${id}`, {
         method: "PATCH",
@@ -86,20 +84,19 @@ export default function PostPage() {
 
   return (
     <>
-      <Header />
-      <section className="flex justify-center">
-        <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 justify-center lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
+      <section className="flex flex-col justify-center items-center">
+        <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 items-center w-full lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
           <div className="lg:w-2/4 relative">
             <Badge cycle_type={post.cycle_type} text={post.cycle_type} />
             <Image
               src={post.image_url}
-              width={500}
-              height={500}
+              width={600}
+              height={600}
               alt={post.title}
-              sizes="260px"
+              sizes="600px"
               style={{
-                width: "500px",
-                height: "500px",
+                width: "600px",
+                height: "600px",
                 objectFit: "cover",
               }}
               className="rounded-lg text-center"
@@ -116,28 +113,32 @@ export default function PostPage() {
               <li>
                 Quantity: {post.quantity} {post.unit}
               </li>
+              <li>Available until: {post.deadline}</li>
             </ul>
-            <WishlistButton onClick={onToggleWishlist} post={post} />
 
             <UserCard
               user={post.created_by}
               status={post.status}
               type={post.cycle_type}
             />
+            <div className="flex flex-row flex-wrap"></div>
             <TransactionForm post={post} onClick={editPost} />
             {session && session.user.id === post.created_by ? (
-              <Button onClick={deletePost} text="delete"></Button>
+              <Button onClick={deletePost} text="delete" />
+            ) : (
+              ""
+            )}
+            {session && session.user.id !== post.created_by ? (
+              <WishlistButton onClick={onToggleWishlist} post={post} />
             ) : (
               ""
             )}
           </div>
         </div>
-      </section>
-      <section className="flex justify-center">
-        <div className="flex flex-col gap-5 justify-center lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
+        <section className="flex flex-col gap-5 lg:gap-10 justify-center w-full lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
           <h3>Description</h3>
-          <p className="text-justify">{post.description}</p>
-        </div>
+          <p className="text-justify">{post.details}</p>
+        </section>
       </section>
     </>
   );

@@ -125,5 +125,10 @@ select {
   border: var(--primary) solid 2px;
   color: var(--primary-color);
   padding: 12px 18px 12px 18px;
-  border-radius: 30px;
+}
+
+textarea {
+  border: var(--primary) solid 2px;
+  color: var(--primary-color);
+  padding: 12px 18px 12px 18px;
 }

@@ -8,13 +8,13 @@ export default function TransactionForm({ onClick, post }) {
 
   async function handleRequest(event) {
     const status = "reserved";
-    const requested_by = session?.user?.id;
+    const requested_by = session?.user?.email;
     onClick({ status, requested_by });
   }
 
   async function handleAcceptRequest(event) {
     const status = "given";
-    const requested_by = session?.user?.id;
+    const requested_by = session?.user?.email;
     onClick({ status, requested_by });
   }
 

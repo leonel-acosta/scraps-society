@@ -18,14 +18,14 @@ export default function UserCard({ user, type }) {
 
   return (
     <>
-      <div className="rounded-lg bg-primary p-5 text-center w-1/2 md:w-1/2 border-2">
-        <span>{({ type } = "giveaway" ? "collected by" : "given by")}</span>
-        <Link href={`/user/${username}`}>
+      <div className="rounded-lg bg-primary p-5 text-center w-fit md:w-1/2 border-2">
+        <span>{type === "giveaway" ? "Given by" : "Collected by"}</span>
+        <Link href={`/user/${user}`}>
           <div className="flex flex-row justify-center gap-5 py-5 items-center ">
             <Image
               src={image}
-              width={60}
-              height={60}
+              width={50}
+              height={50}
               className="rounded-full"
               alt={name}
             />

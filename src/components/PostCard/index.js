@@ -1,9 +1,9 @@
 import Badge from "../Badge";
 import Tag from "../Tag";
-import styles from "./CycleCard.module.css";
+import styles from "./PostCard.module.css";
 import Image from "next/image";
 
-export default function CycleCard({
+export default function PostCard({
   id,
   title,
   address,
@@ -18,21 +18,18 @@ export default function CycleCard({
   status,
 }) {
   return (
-    <div className="flex flex-col md:flex-row p-5 justify-between bg-secondary mb-2 rounded-lg gap-10">
-      <div
-        className="bg-primary rounded-lg col-6 lg:w-1/2"
-        style={{ position: "relative" }}
-      >
+    <div className="flex flex-col lg:flex-row p-5 justify-between bg-secondary mb-2 rounded-lg gap-5">
+      <div className="rounded-lg col-6 lg:w-1/2 relative">
         <Badge cycle_type={cycle_type} text={cycle_type} />
         <Image
           src={image}
-          width={300}
-          height={300}
+          width={340}
+          height={340}
           alt={title}
-          sizes="300px"
+          sizes="340px"
           style={{
-            width: "300px",
-            height: "300px",
+            width: "340px",
+            height: "340px",
             objectFit: "cover",
           }}
           className="rounded-lg text-center"
