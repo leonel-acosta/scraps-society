@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import Button from "@/components/Button";
 import TransactionForm from "@/components/TransactionForm";
 import Image from "next/image";
@@ -18,7 +18,7 @@ export default function PostPage() {
 
   const router = useRouter();
   const { id } = router.query;
-  const { data, error } = useSWR(
+  const { data, error, mutate } = useSWR(
     id ? `/api/posts/${id}` : null,
     id ? fetcher : null
   );
@@ -40,6 +40,7 @@ export default function PostPage() {
 
       if (response.ok) {
         console.log("Post successfully updated");
+        mutate(`/api/posts/${id}`);
       } else {
         console.error("Failed to update post");
       }
@@ -49,7 +50,6 @@ export default function PostPage() {
   }
 
   async function onToggleWishlist(wishlist) {
-    console.log("userId toggle", wishlist);
     try {
       const response = await fetch(`/api/posts/${id}/wishlist`, {
         method: "PATCH",
@@ -61,6 +61,7 @@ export default function PostPage() {
 
       if (response.ok) {
         console.log("Post successfully updated");
+        mutate(`/api/posts/${id}`);
       } else {
         console.error("Failed to update post");
       }
@@ -135,17 +136,7 @@ export default function PostPage() {
       <section className="flex justify-center">
         <div className="flex flex-col gap-5 justify-center lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
           <h3>Description</h3>
-          <p className="text-justify">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec
-            arcu nibh. Maecenas et tellus posuere nunc tincidunt ultricies eget
-            quis quam. Cras scelerisque congue odio id lacinia. Ut ultrices, dui
-            ac scelerisque dictum, magna tellus imperdiet sapien, eget posuere
-            magna tortor a urna. Aliquam lobortis, quam non maximus gravida, sem
-            massa vehicula nibh, quis mollis neque lacus eget sapien. Donec
-            fermentum faucibus sem, a cursus nisl. Etiam nec velit mi. Morbi
-            venenatis lorem dui, at consectetur ipsum tristique eu. Fusce
-            efficitur ligula sed arcu bibendum, at faucibus quam aliquam.
-          </p>
+          <p className="text-justify">{post.description}</p>
         </div>
       </section>
     </>

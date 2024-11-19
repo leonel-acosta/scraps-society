@@ -26,7 +26,7 @@ export default function TransactionForm({ onClick, post }) {
   if (post.status === "given") {
     return (
       <div>
-        <p>Collected by: {post.requested_by}</p>
+        <Tag text={`Taken by: ${post.requested_by}`} />
       </div>
     );
   } else if (session && session.user.id !== post.created_by) {
@@ -35,21 +35,25 @@ export default function TransactionForm({ onClick, post }) {
         {post.status === "available" ? (
           <Button onClick={handleRequest} text={"Request"} accent />
         ) : (
-          <Tag text={"No requests yet"} />
+          <Tag text={"No requests were made until now"} />
         )}
       </>
     );
   } else if (session && session.user.id === post.created_by) {
     return post.status === "reserved" ? (
-      <div>
-        <p>Requested by: {post.requested_by}</p>
-        <Button onClick={handleAcceptRequest} text={"Accept"} accent />
-        <Button onClick={handleDenyRequest} text={"Deny"} primary />
-      </div>
+      <>
+        <div>
+          <Tag text={`Reserved by: ${post.requested_by}`} />
+        </div>
+        <div>
+          <Button onClick={handleAcceptRequest} text={"Accept"} accent />
+          <Button onClick={handleDenyRequest} text={"Deny"} primary />
+        </div>
+      </>
     ) : (
-      <Tag text={"Requests waiting response by user"} />
+      <Tag text={"Request pending response by user"} />
     );
   } else {
-    return <span>Please login to make a request</span>;
+    return <Tag text={"Please login to make a request"} />;
   }
 }
