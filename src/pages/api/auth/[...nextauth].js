@@ -33,7 +33,7 @@ export const authOptions = {
           const user = await User.create({
             email: profile.email,
             name: profile.name,
-            username: profile.name.split(" ").join("-").toLowerCase(),
+            username: profile.email.substring(0, profile.email.indexOf("@")),
             image: profile.avatar_url || profile.picture,
           });
         }
