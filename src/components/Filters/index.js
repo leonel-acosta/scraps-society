@@ -15,8 +15,8 @@ export default function Filters({ onChange }) {
         <label> Type of Cycle</label>
         <select name="cycle_type" id="cycle_type">
           <option value="">All</option>
-          <option value="GIVE">GIVE</option>
-          <option value="COLLECT">COLLECT</option>
+          <option name="GIVEAWAY">GIVEAWAY</option>
+          <option name="COLLECT">COLLECT</option>
         </select>
         <label> Category</label>
         <select name="category" id="category">
@@ -31,17 +31,15 @@ export default function Filters({ onChange }) {
           <option value="Glass">Glass</option>
           <option value="Aluminum">Aluminum</option>
           <option value="Furniture">Furniture</option>
-          <option value="Paper">Paper</option>
           <option value="Other">Other</option>
         </select>
         <label> Unit</label>
         <select name="unit" id="unit">
-          <option value="">All</option>
-          <option value="kg.">kg.</option>
-          <option value="l.">l.</option>
-          <option value="g.">g.</option>
-          <option value="m.">m.</option>
-          <option value="units">units</option>
+          <option name="Kilograms">kg.</option>
+          <option name="grams">g.</option>
+          <option name="meters">m.</option>
+          <option name="liters">l.</option>
+          <option name="pieces">pieces</option>
         </select>
       </form>
     </>

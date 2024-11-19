@@ -61,7 +61,7 @@ export default function UserProfile() {
     return (
       <>
         <PageTitle text={`${user.name}'s profile`} />
-        <section className="m-0 flex flex-col xl:flex-row">
+        <section className="flex flex-col xl:flex-row m-0">
           <div className="bg-tertiary primary p-10 hidden xl:block left-0 md:h-auto lg:w-60">
             <h4>Dashboard</h4>
             <hr className="my-3" />
@@ -80,9 +80,9 @@ export default function UserProfile() {
               </li>
             </ul>
           </div>
-          <div className="md:w-4/5 mt-2 lg:p-10 lg:mx-auto flex flex-col flex-wrap md:gap-10 content-center justify-center">
+          <div className="mt-2 mx-auto lg:p-10 flex flex-col flex-wrap md:gap-10 items-center justify-center ">
             <div
-              className="rounded-lg bg-primary lg:p-10 flex flex-col xl:flex-row gap-10 p-10 w-10/12 lg:w-1/2 justify-center mb-5 items-start"
+              className="rounded-lg bg-primary lg:p-10 flex flex-col xl:flex-row gap-10 p-10 justify-center mb-5 items-center"
               id="profile"
             >
               <Image
@@ -90,7 +90,7 @@ export default function UserProfile() {
                 alt={user.name}
                 width={300}
                 height={300}
-                className="rounded-full lg:w-1/3"
+                className="rounded-full"
               />
 
               <div>
@@ -109,19 +109,19 @@ export default function UserProfile() {
               </div>
             </div>
             <div
-              className="rounded-lg bg-primary py-5 lg:p-10 flex flex-col md:flex-row gap-10 w-10/12 lg:w-1/2 justify-center mb-5 items-center"
+              className="rounded-lg bg-primary py-5 lg:p-10 flex flex-col md:flex-row gap-10  justify-center mb-5 items-center"
               id="cycles"
             >
               <UserPostsList user={user._id} />
             </div>
             <div
-              className="rounded-lg bg-primary py-5 lg:p-10 flex flex-col md:flex-row gap-10 w-10/12 lg:w-1/2 justify-center mb-5 items-center"
+              className="rounded-lg bg-primary py-5 lg:p-10 flex flex-col md:flex-row gap-10  justify-center mb-5 items-center"
               id="wishlist"
             >
               <Wishlist user={user._id} />
             </div>
             <div
-              className="rounded-lg bg-primary p-5 lg:p-10 flex flex-col md:flex-col gap-10 w-10/12 lg:w-1/2 justify-between mb-5"
+              className="rounded-lg bg-primary p-5 lg:p-10 flex flex-col md:flex-col gap-10  justify-between mb-5"
               id="settings"
             >
               <h3>Settings</h3>
@@ -137,7 +137,6 @@ export default function UserProfile() {
   } else {
     return (
       <>
-        <Header />
         <PageTitle text={`${user.name}'s profile`} />
         <section className="m-0 flex flex-col xl:flex-row">
           <div className="w-4/5 py-5 lg:p-10 lg:mx-auto flex flex-col flex-wrap gap-10 content-center justify-center">

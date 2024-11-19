@@ -25,7 +25,7 @@ export default function Wishlist({ user }) {
       <section>
         <h3 className="text-center mb-5">Wishlist</h3>
         <div className="flex flex-row justify-center">
-          <div className="flex justify-center lg:w-3/4">
+          <div className="flex justify-center">
             <ul role="list">
               {wishlistPosts.map((post) => (
                 <li key={post._id}>

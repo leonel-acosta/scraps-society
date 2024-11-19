@@ -15,14 +15,14 @@ export default function UserPostsList({ user }) {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
 
-  const userpostsList = posts.filter((post) => post.created_by === user._id);
+  const userpostsList = posts.filter((post) => post.created_by == user._id);
 
   return (
     <>
       <section>
         <h3 className="text-center mb-5">User Cycles</h3>
         <div className="flex flex-row justify-center">
-          <div className="flex justify-center lg:w-3/4">
+          <div className="flex justify-center">
             <ul role="list">
               {userpostsList.map((post) => (
                 <li key={post.id}>

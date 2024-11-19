@@ -16,8 +16,10 @@ export default function LoginButton() {
   }
   return (
     <>
-      <div className="flex flex-row items-center gap-2">
-        Not signed in <br />
+      <div className="flex flex-row flex-shrink-0 items-center gap-2">
+        <span className="hidden md:block">
+          Not signed in <br />
+        </span>
         <Button primary onClick={() => signIn()} text={"Sign in"}></Button>
       </div>
     </>

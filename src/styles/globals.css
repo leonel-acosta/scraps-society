@@ -132,3 +132,15 @@ textarea {
   color: var(--primary-color);
   padding: 12px 18px 12px 18px;
 }
+
+.hero h1 {
+  font-size: 40px;
+  text-align: center;
+}
+
+@media (min-width: 678px) {
+  .hero h1 {
+    font-size: 80px;
+    text-align: left;
+  }
+}
