@@ -43,14 +43,14 @@ export default function CreateForm({ onSubmit }) {
 
   return (
     <>
-      <section className="p-5 rounded-lg m-5 xl:m-10 ">
+      <section className="p-5 rounded-lg m-5 xl:m-10 mx-auto">
         <form
           aria-labelledby="Cycle Form"
-          className="flex  flex-col xl:flex-row flex-wrap justify-center bg-secondary w-fit mx-auto gap-10 p-10 rounded-lg mb-2"
+          className="flex flex-col lg:w-1/2 mx-auto flex-wrap flex-shrink justify-center bg-secondary gap-10 p-10 rounded-lg mb-2"
           onSubmit={handleSubmit}
           method="post"
         >
-          <div className="flex flex-col">
+          <div className="flex flex-col w-full">
             <label htmlFor="title" className="mb-1 font-sm">
               Title
             </label>
@@ -136,7 +136,7 @@ export default function CreateForm({ onSubmit }) {
               required
             />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col w-full">
             <label htmlFor="address" className="mb-1 font-sm">
               Address
             </label>
@@ -199,7 +199,6 @@ export default function CreateForm({ onSubmit }) {
                 className="input text-white rounded-lg py-2 mb-3"
                 type="file"
                 required
-                multiple
               />
             </div>
             <Button text={"Submit"} accent />
