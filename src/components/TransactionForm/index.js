@@ -9,14 +9,13 @@ export default function TransactionForm({ onClick, post }) {
 
   async function handleRequest(event) {
     const status = "reserved";
-    const requested_by = session?.user?.email;
+    const requested_by = session?.user?.username;
     onClick({ status, requested_by });
   }
 
   async function handleAcceptRequest(event) {
     const status = "given";
-    const requested_by = session?.user?.email;
-    onClick({ status, requested_by });
+    onClick({ status });
   }
 
   async function handleDenyRequest(event) {
@@ -27,7 +26,11 @@ export default function TransactionForm({ onClick, post }) {
   if (post.status === "given") {
     return (
       <div>
-        <Tag text={`Taken by: ${post.requested_by}`} />
+        <Link href={`/user/${post.requested_by}`}>
+          <Tag
+            text={`To be picked up by ${post.requested_by}. Get in touch!`}
+          />
+        </Link>
       </div>
     );
   } else if (session && session.user.username !== post.created_by) {
@@ -44,8 +47,9 @@ export default function TransactionForm({ onClick, post }) {
     return post.status === "reserved" ? (
       <>
         <div>
-          <Link href={`/user/${post.requested_by}`} />
-          <Tag text={`Reserved by:${post.requested_by}`} />
+          <Link href={`/user/${post.requested_by}`}>
+            <Tag text={`Reserved by:${post.requested_by}`} />
+          </Link>
         </div>
         <div>
           <Button onClick={handleAcceptRequest} text={"Accept"} accent />

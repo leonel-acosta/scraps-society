@@ -5,21 +5,29 @@
       .cls-1 {
         stroke-width: 0px;
         color:white;
+                fill:white;
+
       }
 
       .cls-2 {
         font-family: Chivo-Regular, Chivo;
         color:white;
+                fill:white;
+
       }
 
       .cls-2, .cls-3 {
         font-size: 13.54px;
+                fill:white;
+
       }
 
       .cls-3 {
         font-family: Chivo-Thin, Chivo;
         font-weight: 200;
         color:white;
+                fill:white;
+
       }
     </style>
   </defs>
