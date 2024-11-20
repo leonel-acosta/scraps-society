@@ -85,13 +85,21 @@ export default function UserProfile() {
               className="rounded-lg bg-primary lg:p-10 flex flex-col xl:flex-row gap-10 p-10 justify-center mb-5 items-center"
               id="profile"
             >
-              <Image
-                src={user.image}
-                alt={user.name}
-                width={300}
-                height={300}
-                className="rounded-full"
-              />
+              <div className="md:w-2/4 relative">
+                <Image
+                  src={user.image}
+                  width={300}
+                  height={300}
+                  alt={user.name}
+                  sizes="300px"
+                  style={{
+                    width: "300px",
+                    height: "300px",
+                    objectFit: "cover",
+                  }}
+                  className="rounded-full text-center"
+                />
+              </div>
 
               <div>
                 <h3>{user.name}</h3>
@@ -112,13 +120,13 @@ export default function UserProfile() {
               className="rounded-lg bg-primary py-5 lg:p-10 flex flex-col md:flex-row gap-10  justify-center mb-5 items-center"
               id="cycles"
             >
-              <UserPostsList user={user._id} />
+              <UserPostsList user={user.username} />
             </div>
             <div
               className="rounded-lg bg-primary py-5 lg:p-10 flex flex-col md:flex-row gap-10  justify-center mb-5 items-center"
               id="wishlist"
             >
-              <Wishlist user={user._id} />
+              <Wishlist user={user.username} />
             </div>
             <div
               className="rounded-lg bg-primary p-5 lg:p-10 flex flex-col md:flex-col gap-10  justify-between mb-5"
@@ -145,7 +153,7 @@ export default function UserProfile() {
               id="profile"
             >
               <Image
-                src={user.image}
+                src={user.image || user.profile_image}
                 alt={user.name}
                 width={300}
                 height={300}
@@ -171,13 +179,13 @@ export default function UserProfile() {
               className="rounded-lg bg-primary py-5 md:p-10 flex flex-col md:flex-row gap-10 w-10/12 lg:w-1/2 justify-center mb-5 items-center"
               id="cycles"
             >
-              <UserPostsList user={user._id} />
+              <UserPostsList user={user.username} />
             </div>
             <div
               className="rounded-lg bg-primary py-5 lg:p-10 flex flex-col md:flex-row gap-10 w-10/12 lg:w-1/2 justify-center mb-5 items-center"
               id="wishlist"
             >
-              <Wishlist user={user._id} />
+              <Wishlist user={user.username} />
             </div>
           </div>
         </section>

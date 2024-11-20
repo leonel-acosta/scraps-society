@@ -37,9 +37,9 @@ export default function profileForm({ onSubmit }) {
       return data.secure_url;
     }
 
-    const profile_picture = await upload();
+    const image = await upload();
 
-    onSubmit({ ...data, profile_picture });
+    onSubmit({ ...data, image });
     console.log("data", data);
   }
 

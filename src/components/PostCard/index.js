@@ -19,7 +19,7 @@ export default function PostCard({
 }) {
   return (
     <div className="flex flex-col lg:flex-row p-5 justify-between bg-secondary mb-2 rounded-lg gap-5">
-      <div className="rounded-lg col-6 lg:w-1/2 relative">
+      <div className="rounded-lg col-6 w-full md:basis-1/2 relative">
         <Badge cycle_type={cycle_type} text={cycle_type} />
         <Image
           src={image}
@@ -35,7 +35,7 @@ export default function PostCard({
           className="rounded-lg text-center"
         />
       </div>
-      <div className="py-5 gap-5 lg:w-1/2">
+      <div className="py-5 gap-5 md:basis-1/2">
         <Tag text={status} />
         <h3 className="uppercase mb-2">{title}</h3>
         <span>

@@ -18,7 +18,7 @@ export default function UserCard({ user, type }) {
 
   return (
     <>
-      <div className="rounded-lg bg-primary p-5 text-center w-fit md:w-1/2 border-2">
+      <div className="rounded-lg bg-primary p-5 text-center w-fit md:w-fit border-2">
         <span>{type === "GIVEAWAY" ? "Given by" : "Collected by"}</span>
         <Link href={`/user/${user}`}>
           <div className="flex flex-row justify-center gap-5 py-5 items-center ">

@@ -84,8 +84,8 @@ export default function PostPage() {
   return (
     <>
       <section className="flex flex-col justify-center items-center">
-        <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 items-center w-full lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
-          <div className="lg:w-2/4 relative">
+        <div className="flex flex-col lg:flex-row gap-1 lg:gap-10 items-center w-full lg:w-3/4 p-5 m-5 lg:m-5 bg-secondary rounded-lg">
+          <div className="md:w-2/4 relative">
             <Badge cycle_type={post.cycle_type} text={post.cycle_type} />
             <Image
               src={post.image_url}
@@ -101,7 +101,7 @@ export default function PostPage() {
               className="rounded-lg text-center"
             />
           </div>
-          <div className="lg:w-2/4 flex flex-col py-4 gap-5 relative">
+          <div className="md:w-2/4 flex flex-col py-5 gap-2 relative">
             <div className="grid grid-flow-col justify-between items-center">
               <Tag text={post.status} />
               {session && session.user.id !== post.created_by ? (
