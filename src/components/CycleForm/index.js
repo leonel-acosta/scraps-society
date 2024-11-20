@@ -36,10 +36,11 @@ export default function CreateForm({ onSubmit }) {
     }
 
     const image_url = await upload();
-    const created_by = session?.user?.id;
+    const created_by = session?.user?.username;
 
     onSubmit({ ...data, image_url, created_by });
   }
+  console.log(session?.user);
 
   return (
     <>
@@ -59,7 +60,7 @@ export default function CreateForm({ onSubmit }) {
               name="title"
               className="input rounded-lg px-3 py-2 mb-3"
               type="text"
-              placeholder="Enter your name"
+              placeholder="Enter a post title"
               required
             />
             <label htmlFor="cycle_type" className="mb-1 font-sm">

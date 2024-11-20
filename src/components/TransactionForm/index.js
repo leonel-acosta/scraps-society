@@ -2,6 +2,7 @@ import styles from "./TransactionForm.module.css";
 import Button from "../Button";
 import { useSession } from "next-auth/react";
 import Tag from "../Tag";
+import Link from "next/link";
 
 export default function TransactionForm({ onClick, post }) {
   const { status: sessionStatus, data: session } = useSession();
@@ -29,21 +30,22 @@ export default function TransactionForm({ onClick, post }) {
         <Tag text={`Taken by: ${post.requested_by}`} />
       </div>
     );
-  } else if (session && session.user.id !== post.created_by) {
+  } else if (session && session.user.username !== post.created_by) {
     return (
       <>
         {post.status === "available" ? (
           <Button onClick={handleRequest} text={"Request"} accent />
         ) : (
-          <Tag text={"No requests were made until now"} />
+          <Tag text={"Request pending response by user"} />
         )}
       </>
     );
-  } else if (session && session.user.id === post.created_by) {
+  } else if (session && session.user.username === post.created_by) {
     return post.status === "reserved" ? (
       <>
         <div>
-          <Tag text={`Reserved by: ${post.requested_by}`} />
+          <Link href={`/user/${post.requested_by}`} />
+          <Tag text={`Reserved by:${post.requested_by}`} />
         </div>
         <div>
           <Button onClick={handleAcceptRequest} text={"Accept"} accent />
@@ -51,7 +53,7 @@ export default function TransactionForm({ onClick, post }) {
         </div>
       </>
     ) : (
-      <Tag text={"Request pending response by user"} />
+      <Tag text={"No requests were made until now"} />
     );
   } else {
     return <Tag text={"Please login to make a request"} />;

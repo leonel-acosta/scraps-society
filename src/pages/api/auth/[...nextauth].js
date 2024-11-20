@@ -21,6 +21,10 @@ export const authOptions = {
       const sessionUser = await User.findOne({ email: session.user.email });
 
       session.user.id = sessionUser._id;
+      session.user.username = sessionUser.email.substring(
+        0,
+        sessionUser.email.indexOf("@")
+      );
 
       return session;
     },
