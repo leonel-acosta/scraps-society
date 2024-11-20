@@ -81,7 +81,6 @@ export default function PostPage() {
       console.log("Post", post.id, "succesfully deleted");
     }
   }
-
   return (
     <>
       <section className="flex flex-col justify-center items-center">
@@ -103,7 +102,14 @@ export default function PostPage() {
             />
           </div>
           <div className="lg:w-2/4 flex flex-col py-4 gap-5 relative">
-            <Tag text={post.status} />
+            <div className="grid grid-flow-col justify-between items-center">
+              <Tag text={post.status} />
+              {session && session.user.id !== post.created_by ? (
+                <WishlistButton onClick={onToggleWishlist} post={post} />
+              ) : (
+                ""
+              )}
+            </div>
             <h2 className="uppercase mb-2">{post.title}</h2>
             <h5>
               {post.address},{post.zipcode}, {post.city} | {post.country}
@@ -123,13 +129,8 @@ export default function PostPage() {
             />
             <div className="flex flex-row flex-wrap"></div>
             <TransactionForm post={post} onClick={editPost} />
-            {session && session.user.id === post.created_by ? (
+            {session && session.user.username === post.created_by ? (
               <Button onClick={deletePost} text="delete" />
-            ) : (
-              ""
-            )}
-            {session && session.user.id !== post.created_by ? (
-              <WishlistButton onClick={onToggleWishlist} post={post} />
             ) : (
               ""
             )}

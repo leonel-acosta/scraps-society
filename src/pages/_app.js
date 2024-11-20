@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import useSWR from "swr";
+import { useSession } from "next-auth/react";
 
 const chivo = localFont({
   src: "./fonts/Chivo-VariableFont_wght.ttf",
