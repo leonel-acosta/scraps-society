@@ -15,7 +15,7 @@ export default function UserPostsList({ user }) {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
 
-  const userpostsList = posts.filter((post) => post.created_by == user._id);
+  const userpostsList = posts.filter((post) => post.created_by == user);
 
   return (
     <>

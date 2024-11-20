@@ -12,7 +12,6 @@ export default function NavBar({ mobile, desktop }) {
         } flex md:flex flex-row gap-5 items-center justify-center uppercase`}
       >
         <Link href={"/posts"}>Find</Link>
-        <Link href={"/posts/create"}>Post</Link>
       </div>
     );
   } else {

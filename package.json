@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "^14.2.15",
+    "@svgr/webpack": "^8.1.0",
     "cloudinary": "^2.5.1",
     "formidable": "^3.5.2",
     "mongodb": "^6.10.0",
