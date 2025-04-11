@@ -10,6 +10,7 @@ import Tag from "@/components/Tag";
 import WishlistButton from "@/components/WishlistButton";
 import Header from "@/components/Header";
 import PageTitle from "@/components/PageTitle";
+import Map from "@/components/Map";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -139,6 +140,10 @@ export default function PostPage() {
         <section className="flex flex-col gap-5 lg:gap-10 justify-center w-full lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
           <h3>Description</h3>
           <p className="text-justify">{post.details}</p>
+        </section>
+        <section className="flex flex-col gap-5 lg:gap-10 justify-center w-full lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
+          <h3>Location</h3>
+          <Map post={post} />
         </section>
       </section>
     </>
