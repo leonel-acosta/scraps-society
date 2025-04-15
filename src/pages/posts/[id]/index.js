@@ -10,7 +10,7 @@ import Tag from "@/components/Tag";
 import WishlistButton from "@/components/WishlistButton";
 import Header from "@/components/Header";
 import PageTitle from "@/components/PageTitle";
-import Map from "@/components/Map";
+import PostMap from "@/components/PostMap";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -143,7 +143,7 @@ export default function PostPage() {
         </section>
         <section className="flex flex-col gap-5 lg:gap-10 justify-center w-full lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
           <h3>Location</h3>
-          <Map post={post} />
+          <PostMap post={post} />
         </section>
       </section>
     </>
