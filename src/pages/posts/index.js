@@ -3,6 +3,7 @@ import Link from "next/link";
 import PostsList from "@/components/PostsList";
 import PageTitle from "@/components/PageTitle";
 import SearchBar from "@/components/SearchBar";
+import PostsMapView from "@/components/PostsMapView";
 
 export default function PostsPage({
   filteredData,
@@ -24,6 +25,9 @@ export default function PostsPage({
           <div className="basis-full mx-3 mt-3 mb-5">
             <PostsList filteredData={filteredData} />
           </div>
+        </div>
+        <div className="basis-full mx-3 mt-3 mb-5">
+          <PostsMapView filteredData={filteredData} />
         </div>
       </section>
     </>
