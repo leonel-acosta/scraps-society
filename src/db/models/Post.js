@@ -17,10 +17,18 @@ const postSchema = new Schema({
   address: { type: String },
   zipcode: { type: Number },
   city: { type: String },
+  full_address: { type: String },
+  lngLat: {
+    type: [Number],
+    validate: {
+      validator: (arr) => arr.length === 2,
+      message: "lngLat must be an array of two numbers: [longitude, latitude]",
+    },
+  },
   country: { type: String },
   wishlist: [{ type: String }],
 });
 
-const Post = mongoose.models.Post || mongoose.model("Post", postSchema);
+const Post = mongoose.models?.Post || mongoose.model("Post", postSchema);
 
 export default Post;
