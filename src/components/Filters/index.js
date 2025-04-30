@@ -12,13 +12,13 @@ export default function Filters({ onChange }) {
       >
         <h4 className="uppercase mb-4">Filter Options</h4>
         <hr className="uppercase mb-4" />
-        <label> Type of Cycle</label>
+        <label>Type of Cycle</label>
         <select name="cycle_type" id="cycle_type">
           <option value="">All</option>
-          <option name="GIVEAWAY">GIVEAWAY</option>
-          <option name="COLLECT">COLLECT</option>
+          <option value="GIVEAWAY">GIVEAWAY</option>
+          <option value="COLLECT">COLLECT</option>
         </select>
-        <label> Category</label>
+        <label>Category</label>
         <select name="category" id="category">
           <option value="">All</option>
           <option value="Wood">Wood</option>
@@ -33,13 +33,13 @@ export default function Filters({ onChange }) {
           <option value="Furniture">Furniture</option>
           <option value="Other">Other</option>
         </select>
-        <label> Unit</label>
+        <label>Unit</label>
         <select name="unit" id="unit">
-          <option name="Kilograms">kg.</option>
-          <option name="grams">g.</option>
-          <option name="meters">m.</option>
-          <option name="liters">l.</option>
-          <option name="pieces">pieces</option>
+          <option value="Kilograms">kg.</option>
+          <option value="grams">g.</option>
+          <option value="meters">m.</option>
+          <option value="liters">l.</option>
+          <option value="pieces">pieces</option>
         </select>
       </form>
     </>

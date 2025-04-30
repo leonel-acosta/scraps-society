@@ -3,6 +3,7 @@ import Link from "next/link";
 import PostsList from "@/components/PostsList";
 import PageTitle from "@/components/PageTitle";
 import SearchBar from "@/components/SearchBar";
+import PostsMapView from "@/components/PostsMapView";
 
 export default function PostsPage({
   filteredData,
@@ -18,12 +19,15 @@ export default function PostsPage({
           <SearchBar onChange={onChange} searchTerms={searchTerms} />
         </div>
         <div className="flex flex-row flex-wrap md:flex-nowrap justify-center">
-          <div className="basis-full lg:fixed lg:left-10 lg:top-50 lg:basis-1/4 mx-3 mb-5">
+          <div className="basis-full lg:fixed lg:left-10 lg:top-50 lg:basis-1/4 mx-3 mb-5 z-10">
             <Filters onChange={onChange} filteredData={filteredData} />
           </div>
           <div className="basis-full mx-3 mt-3 mb-5">
             <PostsList filteredData={filteredData} />
           </div>
+        </div>
+        <div className="basis-full mx-3 mt-3 mb-5">
+          <PostsMapView filteredData={filteredData} />
         </div>
       </section>
     </>

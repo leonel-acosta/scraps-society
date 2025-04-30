@@ -10,6 +10,8 @@ import Tag from "@/components/Tag";
 import WishlistButton from "@/components/WishlistButton";
 import Header from "@/components/Header";
 import PageTitle from "@/components/PageTitle";
+import PostMap from "@/components/PostMap";
+import Post from "@/db/models/Post";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -67,6 +69,7 @@ export default function PostPage() {
       console.error("Error updating post:", error);
     }
   }
+  console.log("Post", post);
 
   async function deletePost() {
     const confirmDelete = window.confirm(
@@ -139,6 +142,14 @@ export default function PostPage() {
         <section className="flex flex-col gap-5 lg:gap-10 justify-center w-full lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
           <h3>Description</h3>
           <p className="text-justify">{post.details}</p>
+        </section>
+        <section className="flex flex-col gap-5 lg:gap-10 justify-center w-full lg:w-3/4 p-10 m-5 lg:m-5 bg-secondary rounded-lg">
+          <h3>Location</h3>
+          {post.lngLat && post.lngLat.length === 2 ? (
+            <PostMap post={post} />
+          ) : (
+            ""
+          )}
         </section>
       </section>
     </>

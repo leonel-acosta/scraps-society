@@ -1,47 +1,78 @@
 import styles from "./CycleForm.module.css";
 import Button from "../Button";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
+import mapboxgl from "mapbox-gl";
 
 export default function CreateForm({ onSubmit }) {
   const { status, data: session } = useSession();
 
   async function handleSubmit(event) {
     event.preventDefault();
+    const form = event.currentTarget;
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    async function upload() {
-      const form = event.currentTarget;
+    //Image upload to Cloudinary
+
+    async function upload(formElement) {
       const fileInput = Array.from(form.elements).find(
         ({ name }) => name === "file"
       );
 
-      const formData = new FormData();
+      const uploadData = new FormData();
 
       for (const file of fileInput.files) {
-        formData.append("file", file);
+        uploadData.append("file", file);
       }
 
-      formData.append("upload_preset", "scrapssociety");
+      uploadData.append("upload_preset", "scrapssociety");
 
       const data = await fetch(
         "https://api.cloudinary.com/v1_1/dkopuiyae/image/upload",
         {
           method: "POST",
-          body: formData,
+          body: uploadData,
         }
       ).then((r) => r.json());
 
       return data.secure_url;
     }
 
-    const image_url = await upload();
+    // Geocoding address to get coordinates
+
+    const full_address = `${data.address}, ${data.zipcode} ${data.city}, ${data.country}`;
+
+    async function fetchCoordinates(full_address) {
+      const res = await fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
+          full_address
+        )}.json?access_token=${mapboxgl.accessToken}`
+      );
+      const geocodingData = await res.json();
+      const coordinates = geocodingData.features?.[0]?.center;
+      return coordinates ?? null;
+    }
+
+    const coordinates = await fetchCoordinates(full_address);
+    if (!coordinates) {
+      alert("Could not fetch coordinates. Please check address.");
+      return;
+    }
+
+    const image_url = await upload(form);
     const created_by = session?.user?.username;
 
-    onSubmit({ ...data, image_url, created_by });
+    const payload = {
+      ...data,
+      image_url,
+      created_by,
+      full_address,
+      lngLat: coordinates,
+    };
+    console.log("payload", payload);
+    onSubmit(payload);
   }
-  console.log(session?.user);
-
   return (
     <>
       <section className="p-5 rounded-lg m-5 xl:m-10 mx-auto">
@@ -73,8 +104,8 @@ export default function CreateForm({ onSubmit }) {
               className="input rounded-lg px-3 py-2 mb-3"
               required
             >
-              <option name="giveaway">GIVEAWAY</option>
-              <option name="collect">COLLECT</option>
+              <option value="giveaway">GIVEAWAY</option>
+              <option value="collect">COLLECT</option>
             </select>
 
             <label htmlFor="Category" className="mb-1 font-sm">
@@ -119,11 +150,11 @@ export default function CreateForm({ onSubmit }) {
               className="input rounded-lg px-3 py-2 mb-3"
               required
             >
-              <option name="Kilograms">kg.</option>
-              <option name="grams">g.</option>
-              <option name="meters">m.</option>
-              <option name="liters">l.</option>
-              <option name="pieces">pieces</option>
+              <option value="Kilograms">kg.</option>
+              <option value="grams">g.</option>
+              <option value="meters">m.</option>
+              <option value="liters">l.</option>
+              <option value="pieces">pieces</option>
             </select>
 
             <label htmlFor="Deadline" className="mb-1 font-sm">
