@@ -2,7 +2,7 @@
 
 import styles from "./Map.module.css";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -21,11 +21,11 @@ export default function PostsMapView({ filteredData }) {
         container: mapContainer.current,
         style: "mapbox://styles/mapbox/streets-v12",
         center: [0, 0],
-        zoom: 10,
+        zoom: 40,
       });
     }
 
-    if (navigator.geolocation) {
+    if (navigator.geolocation || filteredData.length < 0) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const userCoords = [
@@ -34,7 +34,7 @@ export default function PostsMapView({ filteredData }) {
           ];
 
           mapRef.current.setCenter(userCoords);
-          mapRef.current.setZoom(14);
+          mapRef.current.setZoom(12);
 
           new mapboxgl.Marker({ color: "red" })
             .setLngLat(userCoords)
@@ -75,7 +75,7 @@ export default function PostsMapView({ filteredData }) {
       <div className="section text-center rounded-md text-black my-5 centered">
         <div
           ref={mapContainer}
-          style={{ height: "500px", width: "100%" }}
+          style={{ height: "800px", width: "1200px" }}
         ></div>
       </div>
     </>
