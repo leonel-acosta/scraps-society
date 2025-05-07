@@ -72,10 +72,10 @@ export default function PostsMapView({ filteredData }) {
 
   return (
     <>
-      <div className="section text-center rounded-md text-black my-5 centered">
+      <div className="section text-center rounded-md text-black centered">
         <div
           ref={mapContainer}
-          style={{ height: "800px", width: "1200px" }}
+          style={{ height: "70vh", width: "100vw" }}
         ></div>
       </div>
     </>

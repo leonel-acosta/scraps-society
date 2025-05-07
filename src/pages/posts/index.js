@@ -13,7 +13,7 @@ export default function PostsPage({ filteredData, onChange, searchTerms }) {
   const [isMapView, setIsMapView] = useState(true);
   function handleToggle() {
     setIsMapView((prev) => !prev);
-    console.log(isMapView);
+    console.log("Map view:", isMapView);
   }
 
   return (
@@ -29,13 +29,13 @@ export default function PostsPage({ filteredData, onChange, searchTerms }) {
             <Filters onChange={onChange} filteredData={filteredData} />
           </div>
 
-          <div className="basis-full mx-3 mt-3 mb-5">
-            {isMapView ? (
-              <PostsMapView key="map" filteredData={filteredData} />
-            ) : (
+          {isMapView ? (
+            <PostsMapView key="map" filteredData={filteredData} />
+          ) : (
+            <div className="basis-full mx-3 mt-3 mb-5">
               <PostsList key="list" filteredData={filteredData} />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </section>
     </>
