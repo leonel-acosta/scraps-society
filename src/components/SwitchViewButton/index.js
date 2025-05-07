@@ -1,12 +1,12 @@
+import Button from "../Button";
+
 export default function SwitchViewButton({ isMapView, onToggle }) {
   return (
     <>
-      <button
-        className="btn text-sm rounded-full bg-black py-2 px-3 mx-2"
+      <Button
         onClick={onToggle}
-      >
-        {isMapView ? "List view" : "Map view"}
-      </button>
+        text={isMapView ? "List view" : "Map view"}
+      ></Button>
     </>
   );
 }

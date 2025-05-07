@@ -20,7 +20,7 @@ export default function PostsPage({ filteredData, onChange, searchTerms }) {
     <>
       <PageTitle text={"Cycles"} />
       <section className="flex flex-row flex-wrap justify-center items-center pb-5">
-        <div className="basis-full p-3 fixed md:sticky md:top-20 w-full bottom-0 text-center bg-tertiary m-0 z-10 md:z-10">
+        <div className="basis-full p-3 fixed md:sticky md:top-20 w-full bottom-0 text-center bg-tertiary m-0 z-10 md:z-10 ">
           <SearchBar onChange={onChange} searchTerms={searchTerms} />
           <SwitchViewButton isMapView={isMapView} onToggle={handleToggle} />
         </div>
