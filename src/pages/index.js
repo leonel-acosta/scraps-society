@@ -1,115 +1,74 @@
+import Header from "@/components/Header";
+import Link from "next/link";
 import Image from "next/image";
-import localFont from "next/font/local";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import Button from "@/components/Button";
 
 export default function Home() {
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/pages/index.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <section className="w-full bg-primary bg-opacity-25 md:p-32 py-20 px-10 bg-blend-overlay	 h-screen bg-cover relative bg-center bg-[url('https://res.cloudinary.com/dkopuiyae/image/upload/v1731953315/pexels-tomfisk-3174348_feegvi.png')]">
+        <div className="hero md:text-left text-center m-auto">
+          <h1>RE-THINK</h1>
+          <h1>RE-USE</h1>
+          <h1 className="accent">RE-CYCLE</h1>
+          <h4 className="mb-5">
+            Join the Scraps Society and take action against waste.
+          </h4>
+          <Link href={"/posts"}>
+            <Button accent text={"LET'S GO"} />
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      </section>
+      <section className="flex flex-col-reverse lg:flex-row justify-center gap-10 items-center w-full bg-primary p-10 h-auto">
+        <div>
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src={
+              "https://res.cloudinary.com/dkopuiyae/image/upload/t_Banner 16:9/v1731952074/pexels-magda-ehlers-pexels-2602537_jluq0q.jpg"
+            }
+            alt={"war on waste"}
+            sizes="500px"
+            width={500}
+            height={500}
+            style={{
+              width: "500px",
+              height: "500px",
+              objectFit: "cover",
+            }}
+            className="rounded-lg text-center"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        </div>
+        <div className="lg:w-1/2 p-5">
+          <h3>
+            Connect with others to trade, donate, and reduce waste. Together, we
+            can make sustainability simple and fun.
+          </h3>
+        </div>
+      </section>
+      <section className="flex flex-col  lg:flex-row justify-center gap-10 items-center w-full bg-secondary p-10 h-auto">
+        <div className="lg:w-1/2 p-5">
+          <h3>
+            Participate, track your progress, and help build a cleaner world
+            with every exchange.
+          </h3>
+        </div>
+        <div>
           <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+            src={
+              "https://res.cloudinary.com/dkopuiyae/image/upload/v1731952074/pexels-emmet-35167-128421_uufkcj.jpg"
+            }
+            alt={"Waste Management"}
+            sizes="500px"
+            width={500}
+            height={500}
+            style={{
+              width: "500px",
+              height: "500px",
+              objectFit: "cover",
+            }}
+            className="rounded-lg text-center"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+      </section>
+    </>
   );
 }

@@ -7,12 +7,12 @@ export default async function handler(request, response) {
     console.log("Database connected");
   } catch (error) {
     console.log("Database not connected");
-    return response.satus(500).json({ error: "Database connection failed" });
+    return response.status(500).json({ error: "Database connection failed" });
   }
-  const { id } = request.query;
+  const { id: username } = request.query;
 
   if (request.method === "GET") {
-    const user = await User.findById(id);
+    const user = await User.findOne({ username });
 
     if (!user) {
       return response.status(404).json({ status: "Not Found" });
@@ -23,7 +23,8 @@ export default async function handler(request, response) {
 
   if (request.method === "POST") {
     try {
-      const user = await User.findById(id);
+      const userData = request.body;
+      const newUser = new User({ username, ...userData });
       await user.save();
 
       return response.status(201).json({ status: "User created" });
@@ -32,5 +33,46 @@ export default async function handler(request, response) {
       return response.status(400).json({ error: error.message });
     }
   }
-  const user = User.find((user) => user._id.$oid === id);
+
+  if (request.method === "PATCH") {
+    try {
+      const updatedData = request.body;
+      console.log(updatedData);
+      const updatedUser = await User.findOneAndUpdate(
+        { username },
+        updatedData,
+        {
+          new: true,
+        }
+      );
+
+      if (!updatedUser) {
+        return response.status(404).json({ status: "Not Found" });
+      }
+
+      return response.status(200).json(updatedUser);
+    } catch (error) {
+      console.error("Error updating user:", error);
+      return response
+        .status(500)
+        .json({ error: "Internal server error updating user" });
+    }
+  }
+
+  if (request.method === "DELETE") {
+    try {
+      const deletedUser = await User.findOneAndDelete({ username });
+      if (!deletedUser) {
+        return response.status(404).json({ status: "Not Found" });
+      }
+      return response
+        .status(200)
+        .json({ status: `User ${username} successfully deleted.` });
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      return response
+        .status(500)
+        .json({ error: "Internal server error deleting user" });
+    }
+  }
 }

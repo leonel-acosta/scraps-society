@@ -9,18 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/font": "^14.2.15",
+    "@svgr/webpack": "^8.1.0",
+    "cloudinary": "^2.5.1",
+    "formidable": "^3.5.2",
+    "mapbox-gl": "^3.11.1",
     "mongodb": "^6.10.0",
-    "mongoose": "^8.8.0",
-    "next": "15.0.2",
+    "mongoose": "^8.8.1",
+    "next": "^14.2.15",
     "next-auth": "^4.24.10",
-    "react": "19.0.0-rc-02c0e824-20241028",
-    "react-dom": "19.0.0-rc-02c0e824-20241028",
-    "swr": "^2.2.5"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "swr": "^2.2.5",
+    "update": "^0.4.2"
   },
   "devDependencies": {
     "eslint": "^8",
     "eslint-config-next": "15.0.2",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.1"
+  },
+  "overrides": {
+    "next": {
+      "react": "18.3.1"
+    }
   }
 }
