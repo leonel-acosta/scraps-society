@@ -1,40 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Scraps Society — One‑Page Web Application
 
-## Getting Started
+<p align="center">
+  <img src="https://res.cloudinary.com/dkopuiyae/image/upload/v1763545365/logo-circle_ousily.svg" alt="Scraps Society Logo" width="160" />
+</p>
 
-First, run the development server:
+Scraps Society is a one‑page web application developed as the **capstone project of a full‑stack web development bootcamp**, designed to provide a social and sustainable solution for waste management. It empowers individuals to participate in **social economy**, **circular economy**, **recycling**, and **upcycling** practices by enabling the exchange and collection of reusable waste materials.
+
+## 🌱 Purpose
+
+The platform functions as a **community-driven announcement board** where users can:
+
+* Post available waste materials for others to collect
+* Coordinate donations and pickups
+* View materials available in their area through an interactive map
+
+By facilitating connections between individuals, Scraps Society promotes the responsible reuse of materials and increases participation in sustainable waste management.
+
+## 🚀 Tech Stack
+
+This application is built using a modern and scalable stack:
+
+* **Next.js**
+* **React**
+* **MongoDB**
+* **Mongoose**
+* **Express**
+* **TailwindCSS**
+* **CSS / HTML**
+* **JavaScript**
+* **Mapbox** (interactive location map)
+* **Cloudinary** (asset management)
+
+## 🔗 Live Deployment
+
+The application is deployed on **Vercel**:
+
+➡️ **[https://scraps-society.vercel.app](https://scraps-society.vercel.app)**
+
+## 📝 Current Features
+
+This first version focuses on core functionality and user value:
+
+* A clean **one‑page interface** for quick access to all features
+* Ability to **publish and browse waste material announcements**
+* **Location-based map view** powered by Mapbox
+* Cloudinary‑optimized images for posts
+* Basic user dashboard for managing listings
+* Responsive design using TailwindCSS
+
+## 🔮 Roadmap / Future Enhancements
+
+The next version aims to significantly expand capabilities and enhance user experience.
+
+### 1. **Improved User Dashboard**
+
+* Analytics on contributions and material flow
+* Better structure for managing posts
+
+### 2. **Integrated Chat System**
+
+* Direct messaging between donors and collectors
+* Real‑time notifications
+
+### 3. **Enhanced UI/UX**
+
+* Smoother navigation and improved accessibility
+* Refined visual design and layout
+* UI animations throughout the experience
+
+### 4. **Map Improvements**
+
+* Optimized performance for large data sets
+* Richer location markers and filtering
+
+### 5. **Announcement Details**
+
+* More metadata fields (material weight, type, condition, etc.)
+* Image galleries and previews
+
+### 6. **Quantitative Metrics**
+
+* Total amount of materials available
+* Materials successfully reused or upcycled
+* Community impact statistics
+
+## 📂 Project Structure (Simplified)
+
+```
+/ (root)
+├── public/              # Static assets
+├── src/
+│   ├── components/      # Reusable UI components
+│   ├── pages/           # Next.js routes
+│       ├── api/             # API routes (Express / handlers)
+│   ├── db/             # Database and helpers (Mongoose)
+│   └── styles/          # Global and component styles
+└── ...                  # Config and environment files
+```
+
+## 📦 Installation & Setup
 
 ```bash
+# Install dependencies
+npm install
+# or
+yarn install
+
+# Run development server
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the app at **[http://localhost:3000](http://localhost:3000)**.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 🤝 Contributions
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Contributions and suggestions are welcome to expand the platform and increase its ecological and community impact.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## 📄 License
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is licensed under the MIT License.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+**Scraps Society** — Giving new life to discarded materials.
