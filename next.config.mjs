@@ -1,12 +1,13 @@
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
-    return config;
+  turbopack: {
+    root: __dirname,
   },
   images: {
     remotePatterns: [

@@ -11,8 +11,6 @@ import WishlistButton from "@/components/WishlistButton";
 import Header from "@/components/Header";
 import PageTitle from "@/components/PageTitle";
 import PostMap from "@/components/PostMap";
-import Post from "@/db/models/Post";
-
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function PostPage() {
